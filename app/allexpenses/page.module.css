@@ -1,0 +1,105 @@
+/* MainPage.module.css */
+
+/* Overall container for the page */
+.mainContainer {
+    padding: 20px;
+    max-width: 1200px; /* Max width for better layout */
+    margin: 0 auto; /* Center the content */
+    background-color: #f4f4f4; /* Light background for the page */
+    min-height: 100vh; /* Ensure the page takes up at least the full height */
+  }
+  
+  /* Title for the page */
+  .title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Description text below the title */
+  .description {
+    font-size: 18px;
+    text-align: center;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.5;
+  }
+  
+  /* Styles for the expense grid container */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Individual card styles */
+  .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 180px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  /* Hover effect for cards */
+  /* .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+   */
+  /* Expense name styling */
+  .expenseName {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  /* Amount styling */
+  .amount {
+    font-size: 16px;
+    color: #ff6347;
+    font-weight: 600;
+    margin-top: auto;
+  }
+  
+  /* Responsiveness for small screens */
+  @media (max-width: 600px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .loading {
+    font-size: 1.5rem;
+    color: #999;
+    font-weight: bold;
+    margin-top: 20px;
+    animation: fadeIn 0.2s ease-in-out infinite;
+  }
+  .totalExpenses {
+    background-color: #1e3a8a;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  /* .totalExpenses:hover {
+    transform: scale(1.05);
+  } */
+  
+  
+  

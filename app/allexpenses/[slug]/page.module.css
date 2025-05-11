@@ -1,0 +1,147 @@
+.main {
+    padding: 2rem;
+    background-color: #f4f4f9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .main h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+  
+  .expensesContainer {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .dateCard {
+    background-color: #e9f0ff;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    margin-bottom: 1rem;
+  }
+  
+  .dateCard:hover {
+    background-color: #d0e0ff;
+  }
+  
+  .dateTitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1d72b8;
+    margin-bottom: 0.5rem;
+  }
+  
+  .expenseCard {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .expenseCard:hover {
+    background-color: #f0f4ff;
+    transform: translateY(-2px);
+  }
+  
+  .expenseName {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .expenseAmount {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ff6f61;
+  }
+  
+  .dailyTotal {
+    background-color: #ffecd1;
+    padding: 0.6rem;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #ff6f61;
+    text-align: right;
+    margin-top: 0.5rem;
+  }
+  
+  .backLink {
+    margin-top: 1.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    color: #1d72b8;
+    transition: color 0.3s ease;
+  }
+  
+  .backLink:hover {
+    color: #ff6f61;
+  }
+   /* List container styles */
+   .listing {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+  }
+  
+  /* List item styles */
+  .listitem {
+    font-size: 1.1rem;
+    color: #333;
+    padding: 12px 20px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Hover effect for each expense item */
+  .listitem:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f1f1f1;
+  }
+  
+  /* Expense amount styling */
+  .listitem span {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #e74c3c; /* Red color */
+  }
+
+  
+.deleteButton {
+    background-color: #ff5f5f;
+    color: #fff;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s;
+  }
+  
+  .deleteButton:hover {
+    background-color: #e04545;
+  }
+  

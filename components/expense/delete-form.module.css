@@ -1,0 +1,35 @@
+.confirm{
+    
+    background-color: #ff5f5f;
+    color: #fff;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s;
+  
+}
+  .dialog-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .dialog-btn.confirm {
+    background-color: #ff5f5f;
+    color: #fff;
+  }
+
+.dialog-btn:hover,
+.dialog-btn:focus {
+  background-color: #a44545;
+}
+
+.dialog-btn:disabled,
+.dialog-btn:hover:disabled,
+.dialog-btn:focus:disabled {
+  background: #ccc;
+  color: #979797;
+  cursor: not-allowed;
+}
