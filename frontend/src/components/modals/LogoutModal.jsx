@@ -1,11 +1,15 @@
 import React from "react";
 import { useAuthStore } from "../../store/useAuthStore";
+import { useNavigate } from "react-router-dom";
 
 const LogoutModal = ({ setIsLogout }) => {
+    const navigate=useNavigate();
   const { logout } = useAuthStore();
   async function handleLogout() {
     await logout();
     setIsLogout(false);
+    navigate("/login")
+
   }
   return (
     <div className="modal modal-open">
