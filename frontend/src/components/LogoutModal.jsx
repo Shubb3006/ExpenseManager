@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuthStore } from "../store/useAuthStore";
 
-const LogoutModaL = ({ setIsLogout }) => {
+const LogoutModal = ({ setIsLogout }) => {
   const { logout } = useAuthStore();
   async function handleLogout() {
     await logout();
@@ -24,4 +24,4 @@ const LogoutModaL = ({ setIsLogout }) => {
   );
 };
 
-export default LogoutModaL;
+export default LogoutModal;
