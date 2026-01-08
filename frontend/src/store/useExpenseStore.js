@@ -29,7 +29,6 @@ export const useExpenseStore = create((set) => ({
     try {
       const res = await axiosInstance.get("/expense/getExpenses");
       set({ expenses: res.data.expenses });
-      console.log(res.data.expenses);
     } catch (error) {
     } finally {
       set({ gettingExpenses: false });

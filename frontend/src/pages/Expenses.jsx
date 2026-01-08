@@ -15,7 +15,6 @@ const Expenses = () => {
 
   useEffect(() => {
     getExpenses();
-    console.log("bhje")
   }, []);
 
   if (gettingExpenses) return <ExpensesSkeleton />;
