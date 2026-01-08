@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useExpenseStore } from "../../store/useExpenseStore";
 import { LoaderIcon } from "react-hot-toast";
+import { useExpenseStore } from "../../store/useExpenseStore";
 
 const EditExpenseModal = ({ expenseId, setEditingId }) => {
   const { expenses, editExpense, isEditingExpense } = useExpenseStore();
