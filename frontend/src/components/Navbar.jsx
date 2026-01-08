@@ -19,7 +19,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="bg-base-100 shadow-md px-6 sticky top-0 z-1 flex flex-col">
+    <div className="mt-2 bg-base-100 shadow-md px-6 sticky top-0 z-1 flex flex-col">
       {/* Left */}
       <div className="flex">
         <button
