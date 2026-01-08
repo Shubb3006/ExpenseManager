@@ -25,14 +25,12 @@ export const useExpenseStore = create((set) => ({
   },
 
   getExpenses: async () => {
-    const token = localStorage.getItem("token");
-    if (!token) return;
     set({ gettingExpenses: true });
     try {
       const res = await axiosInstance.get("/expense/getExpenses");
       set({ expenses: res.data.expenses });
+      console.log(res.data.expenses);
     } catch (error) {
-      toast.error(error.response?.data?.message);
     } finally {
       set({ gettingExpenses: false });
     }
