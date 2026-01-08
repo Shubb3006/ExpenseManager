@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useExpenseStore } from "../store/useExpenseStore";
-import { FileSearch, Pencil, Trash } from "lucide-react";
+import {  Pencil, Trash } from "lucide-react";
 import ExpensesSkeleton from "../components/skeletons/ExpensesSkeletons";
-import EditExpenseModal from "../components/EditExpenseModal";
+import EditExpenseModal from "../components/modals/EditExpenseModal";
 
 const Expenses = () => {
   const [deletingId, setDeletingId] = useState(null);

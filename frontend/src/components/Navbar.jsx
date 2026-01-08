@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
-import LogoutModal from "./LogoutModaL.JSX";
+import LogoutModal from "./modals/LogoutModal";
+
 
 const Navbar = () => {
   const { authUser, checkAuth } = useAuthStore();
