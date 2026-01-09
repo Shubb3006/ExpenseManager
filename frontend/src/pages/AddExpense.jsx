@@ -20,7 +20,7 @@ const AddExpense = () => {
   }
 
   return (
-    <div className="min-h-[calc(100vh-64px)] flex items-center justify-center bg-linear-to-br from-base-100 to-base-200 px-4">
+    <div className="min-h-[calc(100vh-60px)] flex items-center justify-center bg-linear-to-br from-base-100 to-base-200 px-4">
       <div className="card w-full max-w-md bg-base-100 shadow-xl border border-base-300">
         <form onSubmit={handleSubmit} className="card-body gap-4">
           <h2 className="text-2xl font-bold text-center text-primary">
