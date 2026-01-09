@@ -52,7 +52,7 @@ const Navbar = () => {
 
       {showNav && (
         <div className="sm:hidden mt-3 flex justify-center">
-          <NavLinks />
+          <NavLinks onClick={() => setShowNav(false)} />
         </div>
       )}
 
