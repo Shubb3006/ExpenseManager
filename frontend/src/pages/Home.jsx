@@ -4,8 +4,8 @@ import { useExpenseStore } from "../store/useExpenseStore";
 import { useEffect } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import HomeSkeleton from "../components/skeletons/HomeSkeletons";
-import MonthlyExpenseChart from "../components/MonthlyExpenseChart";
-import CategoryExpensePie from "../components/CategoryExpenseChart";
+import MonthlyExpenseChart from "../components/charts/MonthlyExpenseChart";
+import CategoryExpensePie from "../components/charts/CategoryExpenseChart";
 
 const Home = () => {
   const { getExpenses, expenses, gettingExpenses } = useExpenseStore();
