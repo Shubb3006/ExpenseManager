@@ -37,7 +37,7 @@ const Login = () => {
     if (success) login(formData);
   }
   return (
-    <div className="min-h-screen flex justify-center items-center bg-base-200">
+    <div className="min-h-[calc(100vh-64px)] flex justify-center items-center bg-base-200">
       <div className="card w-full max-w-md bg-base-100 sbhadow-2xl">
         <form onSubmit={handleSubmit} className="card-body gap-4">
           <h2 className="text-2xl font-bold text-center">Login</h2>

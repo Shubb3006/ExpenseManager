@@ -40,7 +40,7 @@ const Signup = () => {
     setFormData({ email: "", password: "", name: "" });
   }
   return (
-    <div className="min-h-screen flex items-center justify-center bg-base-200">
+    <div className="min-h-[calc(100vh-64px)] flex items-center justify-center bg-base-200">
       <div className="card w-full max-w-md bg-base-100 shadow-2xl">
         <form onSubmit={handleSubmit} className="card-body gap-4">
           <h2 className="text-2xl font-bold text-center">Create Account</h2>
