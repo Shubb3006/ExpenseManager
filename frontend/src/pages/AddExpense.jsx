@@ -8,7 +8,7 @@ const AddExpense = () => {
     title: "",
     amount: "",
     note: "hey",
-    category: "",
+    category: "Food",
     date: "",
   });
 
