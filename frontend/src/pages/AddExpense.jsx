@@ -9,7 +9,7 @@ const AddExpense = () => {
     amount: "",
     note: "",
     category: "",
-    date: "",
+    date: "v",
   });
 
   async function handleSubmit(e) {
