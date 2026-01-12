@@ -7,8 +7,8 @@ const AddExpense = () => {
   const [formData, setFormData] = useState({
     title: "",
     amount: "",
-    note: "hey",
-    category: "Food",
+    note: "",
+    category: "",
     date: "",
   });
 
