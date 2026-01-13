@@ -41,7 +41,7 @@ const BudgetTracker = () => {
   };
 
   return (
-    <div className="card bg-base-200 p-6 shadow-md space-y-4">
+    <div className="card bg-base-200 p-6 shadow-md space-y-4 mb-8">
       {/* Header */}
       <div className="flex justify-between items-center">
         <p className="text-lg font-semibold">{currentMonth}</p>

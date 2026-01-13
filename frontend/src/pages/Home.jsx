@@ -89,7 +89,7 @@ const Home = () => {
       )}
 
       {/* Budget Tracker */}
-      <div className="pt-2">
+      <div className="pt-2 mb-2">
         <BudgetTracker />
       </div>
     </div>
