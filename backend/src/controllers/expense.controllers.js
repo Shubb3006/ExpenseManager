@@ -114,19 +114,28 @@ export const updateExpense = async (req, res) => {
   }
 };
 
-export const updateBudget=async(req,res)=>{
+export const updateBudget = async (req, res) => {
   try {
-    const userId=req.user._id;
-    const {budget}=req.body;
+    const userId = req.user._id;
+    const { budget } = req.body;
 
-    if (!budget && Number(budget) <=0) {
-     return res.status(404).json({message:"Budget must be more than 0"})
+    if (!budget || Number(budget) <= 0) {
+      return res.status(404).json({ message: "Budget must be more than 0" });
     }
-
-    const updatedBudget=await User.findByIdAndUpdate({userId},budget);
-    return res.status(200).json({message:"Budget Updated"})
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { budget: Number(budget) },
+      { new: true }
+    );
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    return res.status(200).json({
+      message: "Budget updated successfully",
+      budget: updatedUser.budget,
+    });
   } catch (error) {
     console.error("Update Expense Error:", error.message);
     return res.status(500).json({ message: "Internal Server Error" });
   }
-}
+};
