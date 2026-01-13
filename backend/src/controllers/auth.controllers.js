@@ -21,6 +21,7 @@ export const signup = async (req, res) => {
       name,
       email: email.toLowerCase(),
       password: hashedPassword,
+      bugdet:25000
     });
     generateToken(newUser._id, res);
     await newUser.save();

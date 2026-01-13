@@ -6,6 +6,7 @@ import { useAuthStore } from "../store/useAuthStore";
 import HomeSkeleton from "../components/skeletons/HomeSkeletons";
 import MonthlyExpenseChart from "../components/charts/MonthlyExpenseChart";
 import CategoryExpensePie from "../components/charts/CategoryExpenseChart";
+import BudgetTracker from "../components/BudgetTracker";
 
 const Home = () => {
   const { getExpenses, expenses, gettingExpenses } = useExpenseStore();
@@ -34,7 +35,7 @@ const Home = () => {
   return (
     <div className="max-w-2xl mx-auto space-y-6 pt-7">
       <h1 className="text-3xl font-bold text-center">
-        Welcome! {authUser.name.toUpperCase()}
+        Welcome! {authUser?.name.toUpperCase()}
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -67,6 +68,8 @@ const Home = () => {
           <CategoryExpensePie expenses={expenses} />
         </div>
       )}
+
+      <BudgetTracker />
     </div>
   );
 };

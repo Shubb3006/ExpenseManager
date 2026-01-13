@@ -32,7 +32,6 @@ const Expenses = () => {
     const titleText=expense.title.trim().toLowerCase();
     const matchesSearch = searchtext?titleText.includes(searchtext):true
     
-
     const matchesCategory = searchCategory
       ? expense.category === searchCategory
       : true;

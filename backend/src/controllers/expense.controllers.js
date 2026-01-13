@@ -1,5 +1,6 @@
 import { EXPENSE_CATEGORIES } from "../constants/expenseCategories.js";
 import Expense from "../models/expense.model.js";
+import User from "../models/user.model.js";
 
 export const addExpense = async (req, res) => {
   const userId = req.user._id;
@@ -112,3 +113,20 @@ export const updateExpense = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+export const updateBudget=async(req,res)=>{
+  try {
+    const userId=req.user._id;
+    const {budget}=req.body;
+
+    if (!budget && Number(budget) <=0) {
+     return res.status(404).json({message:"Budget must be more than 0"})
+    }
+
+    const updatedBudget=await User.findByIdAndUpdate({userId},budget);
+    return res.status(200).json({message:"Budget Updated"})
+  } catch (error) {
+    console.error("Update Expense Error:", error.message);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+}

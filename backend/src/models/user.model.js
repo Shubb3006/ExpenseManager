@@ -11,6 +11,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    bugdet:{
+      type:Number,
+    },
     password: {
       type: String,
       required: true,
