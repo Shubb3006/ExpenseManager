@@ -68,6 +68,7 @@ const BudgetTracker = () => {
           value={percentageUsed}
           max="100"
         ></progress>
+
         <p className="text-sm text-gray-500 mt-1 text-center">
           {percentageUsed}% of budget used
         </p>
