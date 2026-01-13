@@ -29,7 +29,7 @@ const Expenses = () => {
 
   const filteredExpenses = expenses.filter((expense) => {
     const searchtext = search.trim().toLowerCase();
-    const titleText=expense.title.trim().toLowerCase();
+    const titleText=expense?.title?.trim().toLowerCase();
     const matchesSearch = searchtext?titleText.includes(searchtext):true
     
     const matchesCategory = searchCategory
@@ -157,7 +157,7 @@ const Expenses = () => {
                   <ul className="space-y-3">
                     {monthExpenses.map((expense) => (
                       <ExpenseList
-                        key={expense._id}
+                        
                         expense={expense}
                         deletingId={deletingId}
                         setDeletingId={setDeletingId}

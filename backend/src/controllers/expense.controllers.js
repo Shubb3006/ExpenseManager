@@ -130,10 +130,7 @@ export const updateBudget = async (req, res) => {
     if (!updatedUser) {
       return res.status(404).json({ message: "User not found" });
     }
-    return res.status(200).json({
-      message: "Budget updated successfully",
-      budget: updatedUser.budget,
-    });
+    return res.status(200).json({message: "Budget updated successfully"});
   } catch (error) {
     console.error("Update Expense Error:", error.message);
     return res.status(500).json({ message: "Internal Server Error" });

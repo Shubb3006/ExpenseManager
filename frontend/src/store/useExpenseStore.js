@@ -8,6 +8,7 @@ export const useExpenseStore = create((set) => ({
   gettingExpenses: false,
   isDeletingExpense: false,
   isEditingExpense: false,
+  isUpdatingBudget:false,
 
   addExpense: async (data) => {
     set({ addingExpense: true });
@@ -75,4 +76,17 @@ export const useExpenseStore = create((set) => ({
       set({ isEditingExpense: false });
     }
   },
+
+  updateBudget:async(data)=>{
+    set({isUpdatingBudget:true});
+    try {
+      const res=await axiosInstance.patch("/expense/updateBudget",data);
+      toast.success("Expense Updated");
+    } catch (error) {
+      toast.error(error.response?.data?.message);
+    }
+    finally{
+    set({isUpdatingBudget:false});
+    }
+  }
 }));
