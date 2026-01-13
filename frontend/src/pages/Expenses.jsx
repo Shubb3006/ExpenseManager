@@ -8,6 +8,7 @@ const Expenses = () => {
   const [deletingId, setDeletingId] = useState(null);
   const [editingId, setEditingId] = useState(null);
   const [search, setSearch] = useState("");
+
   const [searchCategory, setCategory] = useState("");
 
   const { getExpenses, expenses, gettingExpenses, deleteExpense } =
@@ -29,9 +30,9 @@ const Expenses = () => {
 
   const filteredExpenses = expenses.filter((expense) => {
     const searchtext = search.trim().toLowerCase();
-    const titleText=expense?.title?.trim().toLowerCase();
-    const matchesSearch = searchtext?titleText.includes(searchtext):true
-    
+    const titleText = expense?.title?.trim().toLowerCase();
+    const matchesSearch = searchtext ? titleText.includes(searchtext) : true;
+
     const matchesCategory = searchCategory
       ? expense.category === searchCategory
       : true;
@@ -139,11 +140,11 @@ const Expenses = () => {
                 className="collapse collapse-arrow bg-base-100 border border-base-300"
               >
                 <input
-                  type="radio"
+                  type="checkbox"
                   name="expense-accordion"
                   defaultChecked={index === 0}
                 />
-
+              
                 {/* Month Header */}
                 <div className="collapse-title flex justify-between items-center text-lg font-semibold">
                   <span>{monthYear}</span>
@@ -151,13 +152,11 @@ const Expenses = () => {
                     Total: ₹{monthlyTotal.toLocaleString("en-IN")}
                   </span>
                 </div>
-
                 {/* Expense List */}
                 <div className="collapse-content">
                   <ul className="space-y-3">
                     {monthExpenses.map((expense) => (
                       <ExpenseList
-                        
                         expense={expense}
                         deletingId={deletingId}
                         setDeletingId={setDeletingId}
