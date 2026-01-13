@@ -55,31 +55,34 @@ const ExpenseList = ({
             </p>
           </div>
 
-          <div className="mt-2 md:mt-0 flex items-center gap-3">
-            <span className="font-bold text-xl text-primary">
-              ₹{expense?.amount?.toLocaleString("en-IN")}
-            </span>
+          <div className="mt-2 md:mt-0 flex items-center gap-3 justify-between">
+            <div>
+              <span className="font-bold text-xl text-primary">
+                ₹{expense?.amount?.toLocaleString("en-IN")}
+              </span>
+            </div>
+            <div>
+              <button
+                className="btn btn-ghost btn-sm"
+                title="Edit Expense"
+                onClick={() => handleEditExpense(expense._id)}
+              >
+                <Pencil size={16} />
+              </button>
 
-            <button
-              className="btn btn-ghost btn-sm"
-              title="Edit Expense"
-              onClick={() => handleEditExpense(expense._id)}
-            >
-              <Pencil size={16} />
-            </button>
-
-            <button
-              className="btn btn-error btn-sm"
-              title="Delete Expense"
-              disabled={deletingId === expense._id}
-              onClick={() => setDeletingId(expense._id)}
-            >
-              {deletingId === expense._id ? (
-                <span className="loading loading-spinner loading-sm"></span>
-              ) : (
-                <Trash size={16} />
-              )}
-            </button>
+              <button
+                className="btn btn-error btn-sm"
+                title="Delete Expense"
+                disabled={deletingId === expense._id}
+                onClick={() => setDeletingId(expense._id)}
+              >
+                {deletingId === expense._id ? (
+                  <span className="loading loading-spinner loading-sm"></span>
+                ) : (
+                  <Trash size={16} />
+                )}
+              </button>
+            </div>
           </div>
         </>
       )}
