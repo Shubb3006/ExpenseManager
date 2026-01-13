@@ -17,6 +17,7 @@ const ExpenseList = ({
           </p>
           <div className="flex justify-center gap-4">
             <button
+            autoFocus
               className="btn btn-error btn-sm hover:scale-105 transition-transform"
               onClick={() => handleDelete(deletingId)}
             >

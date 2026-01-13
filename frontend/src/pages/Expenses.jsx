@@ -17,6 +17,15 @@ const Expenses = () => {
     getExpenses();
   }, []);
 
+  useEffect(()=>{
+    const handleKey=(e)=>{
+      if(e.key==="Escape") setDeletingId(null);
+
+    }
+    window.addEventListener("keydown",handleKey);
+    return ()=>removeEventListener("keydown",handleKey);
+  },[])
+
   if (gettingExpenses) return <ExpensesSkeleton />;
 
   const filteredExpenses = expenses.filter((expense) => {
@@ -71,6 +80,8 @@ const Expenses = () => {
   async function handleEditExpense(expenseId) {
     setEditingId(expenseId);
   }
+
+  
 
   return (
     <div className="max-w-2xl mx-auto space-y-3">

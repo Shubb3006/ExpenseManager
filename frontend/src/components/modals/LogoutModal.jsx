@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuthStore } from "../../store/useAuthStore";
 import { useNavigate } from "react-router-dom";
 
 const LogoutModal = ({ setIsLogout }) => {
-  const navigate = useNavigate();
   const { logout } = useAuthStore();
   async function handleLogout() {
     await logout();
     setIsLogout(false);
   }
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === "Escape") setIsLogout(false);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [setIsLogout]);
+
   return (
     <div className="modal modal-open">
       <div className="modal-box">
