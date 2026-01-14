@@ -11,7 +11,7 @@ const getMonthYear = (date) =>
 
 const BudgetTracker = () => {
   const { expenses, updateBudget, isUpdatingBudget } = useExpenseStore();
-  const { authUser } = useAuthStore();
+  const { authUser, isCheckingAuth } = useAuthStore();
 
   const [budget, setBudget] = useState("");
   const [givenBudget, setGivenBudget] = useState(authUser?.budget);
@@ -49,7 +49,7 @@ const BudgetTracker = () => {
       <div className="flex justify-between items-center">
         <p className="text-lg font-semibold">{currentMonth}</p>
         <span className="badge badge-outline">
-          Budget: ₹{Number(givenBudget).toLocaleString("en-IN")}
+          Budget: ₹{Number(authUser.budget).toLocaleString("en-IN")}
         </span>
       </div>
 
