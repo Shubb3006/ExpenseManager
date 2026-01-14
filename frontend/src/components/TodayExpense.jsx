@@ -60,6 +60,7 @@ const TodayExpense = () => {
           handleEditExpense={handleEditExpense}
         />
       ))}
+      
       {todayExpense.length === 0 && (
         <p className="text-gray-500 text-sm italic text-center">
           No expenses recorded today

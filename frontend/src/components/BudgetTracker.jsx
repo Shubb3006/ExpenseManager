@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useExpenseStore } from "../store/useExpenseStore";
 import { useAuthStore } from "../store/useAuthStore";
+import { Loader2 } from "lucide-react";
 
 const getMonthYear = (date) =>
   new Date(date).toLocaleString("en-US", {
@@ -9,10 +10,11 @@ const getMonthYear = (date) =>
   });
 
 const BudgetTracker = () => {
-  const { expenses, updateBudget } = useExpenseStore();
+  const { expenses, updateBudget, isUpdatingBudget } = useExpenseStore();
   const { authUser } = useAuthStore();
 
   const [budget, setBudget] = useState("");
+  const [givenBudget, setGivenBudget] = useState(authUser?.budget);
 
   const groupedExpenses = expenses.reduce((groups, expense) => {
     const key = getMonthYear(expense.date);
@@ -30,7 +32,7 @@ const BudgetTracker = () => {
   );
 
   const percentageUsed = Math.min(
-    Math.round((totalExpense / authUser.budget) * 100),
+    Math.round((totalExpense / givenBudget) * 100),
     100
   );
 
@@ -38,6 +40,7 @@ const BudgetTracker = () => {
     e.preventDefault();
     await updateBudget({ budget });
     setBudget("");
+    setGivenBudget(budget);
   };
 
   return (
@@ -46,7 +49,7 @@ const BudgetTracker = () => {
       <div className="flex justify-between items-center">
         <p className="text-lg font-semibold">{currentMonth}</p>
         <span className="badge badge-outline">
-          Budget: ₹{Number(authUser.budget).toLocaleString("en-IN")}
+          Budget: ₹{Number(givenBudget).toLocaleString("en-IN")}
         </span>
       </div>
 
@@ -90,8 +93,12 @@ const BudgetTracker = () => {
           onChange={(e) => setBudget(e.target.value)}
           placeholder="Set monthly budget"
         />
-        <button className="btn btn-primary" type="submit">
-          Update
+        <button
+          disabled={isUpdatingBudget}
+          className="btn btn-primary"
+          type="submit"
+        >
+          {isUpdatingBudget ? <Loader2 className="animate-spin" /> : "Update"}
         </button>
       </form>
     </div>

@@ -7,7 +7,7 @@ import HomeSkeleton from "../components/skeletons/HomeSkeletons";
 import MonthlyExpenseChart from "../components/charts/MonthlyExpenseChart";
 import CategoryExpensePie from "../components/charts/CategoryExpenseChart";
 import BudgetTracker from "../components/BudgetTracker";
-import TodayExpense from '../components/TodayExpense';
+import TodayExpense from "../components/TodayExpense";
 
 const Home = () => {
   const { getExpenses, expenses, gettingExpenses } = useExpenseStore();
@@ -17,6 +17,7 @@ const Home = () => {
     if (!authUser) return;
     getExpenses();
   }, []);
+  console.log(authUser);
 
   if (gettingExpenses || isCheckingAuth) return <HomeSkeleton />;
 
