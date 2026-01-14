@@ -7,17 +7,18 @@ import HomeSkeleton from "../components/skeletons/HomeSkeletons";
 import MonthlyExpenseChart from "../components/charts/MonthlyExpenseChart";
 import CategoryExpensePie from "../components/charts/CategoryExpenseChart";
 import BudgetTracker from "../components/BudgetTracker";
+import TodayExpense from '../components/TodayExpense';
 
 const Home = () => {
   const { getExpenses, expenses, gettingExpenses } = useExpenseStore();
-  const { authUser } = useAuthStore();
+  const { authUser, isCheckingAuth } = useAuthStore();
 
   useEffect(() => {
     if (!authUser) return;
     getExpenses();
   }, []);
 
-  if (gettingExpenses) return <HomeSkeleton />;
+  if (gettingExpenses || isCheckingAuth) return <HomeSkeleton />;
 
   const totalExpense = expenses.reduce(
     (sum, exp) => sum + Number(exp.amount),
@@ -91,6 +92,10 @@ const Home = () => {
       {/* Budget Tracker */}
       <div className="pt-2 mb-2">
         <BudgetTracker />
+      </div>
+
+      <div className="pt-2 mb-2">
+        <TodayExpense />
       </div>
     </div>
   );

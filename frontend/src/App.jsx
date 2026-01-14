@@ -8,14 +8,16 @@ import Expenses from "./pages/Expenses";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { Toaster } from "react-hot-toast";
-import { useAuthStore } from "./store/useAuthStore";
 import AddExpense from "./pages/AddExpense";
+import { useAuthStore } from "./store/useAuthStore";
 
 function App() {
-  const { checkAuth, authUser } = useAuthStore();
+  const { checkAuth, authUser, isCheckingAuth } = useAuthStore();
+
   useEffect(() => {
     checkAuth();
-  }, [checkAuth, authUser]);
+  }, []);
+
   return (
     <>
       <Toaster />
