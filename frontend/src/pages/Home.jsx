@@ -17,7 +17,6 @@ const Home = () => {
     if (!authUser) return;
     getExpenses();
   }, []);
-  console.log(authUser);
 
   if (gettingExpenses || isCheckingAuth) return <HomeSkeleton />;
 

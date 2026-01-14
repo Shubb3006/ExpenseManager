@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useExpenseStore } from "../store/useExpenseStore";
-import { CATEGORY_BADGES } from "../constants";
 import ExpenseList from "./ExpenseList";
 import EditExpenseModal from "./modals/EditExpenseModal";
 
@@ -60,7 +59,7 @@ const TodayExpense = () => {
           handleEditExpense={handleEditExpense}
         />
       ))}
-      
+
       {todayExpense.length === 0 && (
         <p className="text-gray-500 text-sm italic text-center">
           No expenses recorded today
