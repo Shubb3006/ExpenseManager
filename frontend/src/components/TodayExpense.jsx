@@ -47,25 +47,24 @@ const TodayExpense = () => {
 
   return (
     <div className="bg-base-200 p-5 rounded-lg shadow-md space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b pb-3 mb-3">
-  {/* Left */}
-  <div className="flex items-center gap-3">
-    <h3 className="text-xl font-bold text-primary">
-      Today's Expenses
-    </h3>
-    <span className="badge badge-outline text-xs">
-      {new Date().toLocaleDateString()}
-    </span>
-  </div>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b pb-3 mb-3">
+        {/* Left */}
+        <div className="flex items-center gap-3">
+          <h3 className="text-xl font-bold text-primary">Today's Expenses</h3>
+          <span className="badge badge-outline text-xs">
+            {new Date().toLocaleDateString()}
+          </span>
+          
+        </div>
 
-  {/* Right */}
-  <div className="flex items-center gap-2 bg-base-100 px-4 py-1.5 rounded-full shadow-sm">
-    <span className="text-sm text-gray-500">Total</span>
-    <span className="text-lg font-bold text-primary">
-      ₹{totalExpense.toLocaleString("en-IN")}
-    </span>
-  </div>
-</div>
+        {/* Right */}
+        <div className="flex items-center gap-2 bg-base-100 px-4 py-2 rounded-full shadow-sm">
+          <span className="text-sm text-gray-500">Total</span>
+          <span className="text-lg font-bold text-primary">
+            ₹{totalExpense.toLocaleString("en-IN")}
+          </span>
+        </div>
+      </div>
 
       {todayExpense.map((expense) => (
         <ExpenseList
