@@ -30,6 +30,12 @@ const TodayExpense = () => {
         new Date().toLocaleDateString()
     ) || [];
 
+  const totalExpense = todayExpense.reduce(
+    (amount, expense) => amount + Number(expense.amount),
+    0
+  );
+  console.log(totalExpense);
+
   async function handleDelete(expenseId) {
     await deleteExpense(expenseId);
     setDeletingId(null);
@@ -41,13 +47,25 @@ const TodayExpense = () => {
 
   return (
     <div className="bg-base-200 p-5 rounded-lg shadow-md space-y-4">
-      <h3 className="text-xl font-bold text-primary border-b pb-2 mb-3">
-        Today's Expenses
-      </h3>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b pb-3 mb-3">
+  {/* Left */}
+  <div className="flex items-center gap-3">
+    <h3 className="text-xl font-bold text-primary">
+      Today's Expenses
+    </h3>
+    <span className="badge badge-outline text-xs">
+      {new Date().toLocaleDateString()}
+    </span>
+  </div>
 
-      {currentMonth && (
-        <p className="text-sm text-gray-500 mb-2">Month: {currentMonth}</p>
-      )}
+  {/* Right */}
+  <div className="flex items-center gap-2 bg-base-100 px-4 py-1.5 rounded-full shadow-sm">
+    <span className="text-sm text-gray-500">Total</span>
+    <span className="text-lg font-bold text-primary">
+      ₹{totalExpense.toLocaleString("en-IN")}
+    </span>
+  </div>
+</div>
 
       {todayExpense.map((expense) => (
         <ExpenseList

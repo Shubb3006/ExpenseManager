@@ -12,7 +12,7 @@ import AddExpense from "./pages/AddExpense";
 import { useAuthStore } from "./store/useAuthStore";
 
 function App() {
-  const { checkAuth, authUser, isCheckingAuth } = useAuthStore();
+  const { checkAuth, authUser } = useAuthStore();
 
   useEffect(() => {
     checkAuth();
