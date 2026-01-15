@@ -106,7 +106,6 @@ const Expenses = () => {
           </div>
 
           <button
-            data-tip="Download filtered expenses"
             onClick={() =>
               exportToCSV(
                 filteredExpenses,
@@ -115,6 +114,7 @@ const Expenses = () => {
             }
             disabled={filteredExpenses.length === 0}
             className="tooltip tooltip-up btn btn-outline btn-primary flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            data-tip="Download filtered expenses"
           >
             <Download size={20} />
             Export CSV
