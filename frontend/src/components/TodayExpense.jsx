@@ -43,7 +43,6 @@ const TodayExpense = () => {
   async function handleEditExpense(expenseId) {
     setEditingId(expenseId);
   }
-  console.log(totalExpense);
 
   return (
     <div className="bg-base-200 p-5 rounded-lg shadow-md space-y-4">
