@@ -4,12 +4,14 @@ import ExpensesSkeleton from "../components/skeletons/ExpensesSkeletons";
 import EditExpenseModal from "../components/modals/EditExpenseModal";
 import ExpenseList from "../components/ExpenseList";
 import { exportToCSV } from "../lib/exportToCSV";
+import { useAuthStore } from "../store/useAuthStore";
 
 const Expenses = () => {
   const [deletingId, setDeletingId] = useState(null);
   const [editingId, setEditingId] = useState(null);
   const [search, setSearch] = useState("");
 
+  const {authUser}=useAuthStore();
   const [searchCategory, setCategory] = useState("");
 
   const { getExpenses, expenses, gettingExpenses, deleteExpense } =
@@ -101,35 +103,53 @@ const Expenses = () => {
               </p>
             </div>
           </div>
+
           <button
-            onClick={() => exportToCSV(filteredExpenses)}
-            className="px-4 py-2 bg-purple-600 text-white rounded"
+            data-tip="Download filtered expenses"
+            onClick={() => exportToCSV(filteredExpenses, `${authUser?.name || "user"}_expenses`)}
+            disabled={filteredExpenses.length === 0}
+            className="tooltip tooltip-up btn btn-outline btn-primary flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 16v-8m0 0l-3 3m3-3l3 3M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"
+              />
+            </svg>
             Export CSV
           </button>
-          <div className="flex gap-2">
-            <input
-              type="text"
-              placeholder="Search Expense"
-              className="input input-bordered w-full"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
+        </div>
 
-            <select
-              className="select select-bordered w-full"
-              value={searchCategory}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value="">Select Category</option>
-              <option value="Food">Food</option>
-              <option value="Travel">Travel</option>
-              <option value="Health & Fitness">Health & Fitness</option>
-              <option value="Shopping">Shopping</option>
-              <option value="Bills">Bills</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
+        <div className="flex gap-2">
+          <input
+            type="text"
+            placeholder="Search Expense"
+            className="input input-bordered w-full"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+
+          <select
+            className="select select-bordered w-full"
+            value={searchCategory}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="">Select Category</option>
+            <option value="Food">Food</option>
+            <option value="Travel">Travel</option>
+            <option value="Health & Fitness">Health & Fitness</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Bills">Bills</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
 
         {filteredExpenses.length === 0 && (
