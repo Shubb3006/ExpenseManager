@@ -13,7 +13,6 @@ const AuthSkeleton = () => {
           <div className="flex items-center gap-3">
             <div className="skeleton h-8 w-20 hidden sm:block"></div>
             <div className="skeleton h-10 w-10 rounded-full"></div>
-            hi
           </div>
         </div>
       </div>
