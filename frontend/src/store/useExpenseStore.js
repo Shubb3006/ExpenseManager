@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { axiosInstance } from "../lib/axios";
 import toast from "react-hot-toast";
+import { useAuthStore } from "./useAuthStore";
 
 export const useExpenseStore = create((set) => ({
   expenses: [],
@@ -77,12 +78,14 @@ export const useExpenseStore = create((set) => ({
     }
   },
 
-  updateBudget:async(data)=>{
+  updateBudget:async({budget})=>{
     set({isUpdatingBudget:true});
     try {
-      const res=await axiosInstance.patch("/expense/updateBudget",data);
+      const res=await axiosInstance.patch("/expense/updateBudget",{budget});
       toast.success("Budget Updated");
+      useAuthStore.getState().setBudget(budget);
     } catch (error) {
+      console.log(error.message)
       toast.error(error.response?.data?.message);
     }
     finally{

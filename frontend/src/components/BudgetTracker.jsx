@@ -11,10 +11,9 @@ const getMonthYear = (date) =>
 
 const BudgetTracker = () => {
   const { expenses, updateBudget, isUpdatingBudget } = useExpenseStore();
-  const { authUser } = useAuthStore();
+  const { budget } = useAuthStore();
 
-  const [budget, setBudget] = useState("");
-  const [givenBudget, setGivenBudget] = useState(authUser?.budget);
+  const [givenBudget, setGivenBudget] = useState("");
 
   const groupedExpenses = expenses.reduce((groups, expense) => {
     const key = getMonthYear(expense.date);
@@ -32,15 +31,14 @@ const BudgetTracker = () => {
   );
 
   const percentageUsed = Math.min(
-    Math.round((totalExpense / givenBudget) * 100),
+    Math.round((totalExpense / budget) * 100),
     100
   );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await updateBudget({ budget });
-    setBudget("");
-    setGivenBudget(budget);
+    await updateBudget({ budget: Number(givenBudget) });
+    setGivenBudget("");
   };
 
   return (
@@ -49,7 +47,7 @@ const BudgetTracker = () => {
       <div className="flex justify-between items-center">
         <p className="text-lg font-semibold">{currentMonth}</p>
         <span className="badge badge-outline">
-          Budget: ₹{Number(givenBudget).toLocaleString("en-IN")}
+          Budget: ₹{Number(budget).toLocaleString("en-IN")}
         </span>
       </div>
 
@@ -89,8 +87,8 @@ const BudgetTracker = () => {
         <input
           type="number"
           className="input input-bordered w-full"
-          value={budget}
-          onChange={(e) => setBudget(e.target.value)}
+          value={givenBudget}
+          onChange={(e) => setGivenBudget(e.target.value)}
           placeholder="Set monthly budget"
         />
         <button
