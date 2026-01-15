@@ -21,7 +21,7 @@ const Home = () => {
     getExpenses();
   }, []);
 
-  if (gettingExpenses || isCheckingAuth) return <HomeSkeleton />;
+  if (gettingExpenses) return <HomeSkeleton />;
 
   const totalExpense = expenses.reduce(
     (sum, exp) => sum + Number(exp.amount),
