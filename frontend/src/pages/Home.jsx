@@ -11,7 +11,7 @@ import TodayExpense from "../components/TodayExpense";
 
 const Home = () => {
   const { getExpenses, expenses, gettingExpenses } = useExpenseStore();
-  const { authUser, isCheckingAuth, checkAuth } = useAuthStore();
+  const { authUser} = useAuthStore();
 
   // useEffect(() => {
   //   checkAuth();

@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     checkAuth();
   }, []);
-  if (isCheckingAuth) return <AuthSkeleton/>;
+  if (isCheckingAuth) return <AuthSkeleton />;
   return (
     <>
       <Toaster />
