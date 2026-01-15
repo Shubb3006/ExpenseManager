@@ -3,6 +3,7 @@ import { useExpenseStore } from "../store/useExpenseStore";
 import ExpensesSkeleton from "../components/skeletons/ExpensesSkeletons";
 import EditExpenseModal from "../components/modals/EditExpenseModal";
 import ExpenseList from "../components/ExpenseList";
+import { exportToCSV } from "../lib/exportToCSV";
 
 const Expenses = () => {
   const [deletingId, setDeletingId] = useState(null);
@@ -100,6 +101,12 @@ const Expenses = () => {
               </p>
             </div>
           </div>
+          <button
+            onClick={() => exportToCSV(filteredExpenses)}
+            className="px-4 py-2 bg-purple-600 text-white rounded"
+          >
+            Export CSV
+          </button>
           <div className="flex gap-2">
             <input
               type="text"
