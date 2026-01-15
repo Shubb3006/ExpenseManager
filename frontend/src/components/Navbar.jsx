@@ -11,9 +11,9 @@ const Navbar = () => {
   const [isLogout, setIsLogout] = useState(false);
   const [showNav, setShowNav] = useState(false);
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
+  // useEffect(() => {
+  //   checkAuth();
+  // }, []);
 
   function handleLogout() {
     setIsLogout(true);

@@ -13,9 +13,9 @@ const Home = () => {
   const { getExpenses, expenses, gettingExpenses } = useExpenseStore();
   const { authUser, isCheckingAuth, checkAuth } = useAuthStore();
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
+  // useEffect(() => {
+  //   checkAuth();
+  // }, []);
   useEffect(() => {
     if (!authUser) return;
     getExpenses();

@@ -10,14 +10,15 @@ import Signup from "./pages/Signup";
 import { Toaster } from "react-hot-toast";
 import AddExpense from "./pages/AddExpense";
 import { useAuthStore } from "./store/useAuthStore";
+import AuthSkeleton from "./components/skeletons/AuthSkeletons";
 
 function App() {
-  const { checkAuth, authUser } = useAuthStore();
+  const { checkAuth, authUser, isCheckingAuth } = useAuthStore();
 
   useEffect(() => {
     checkAuth();
   }, []);
-
+  if (isCheckingAuth) return <AuthSkeleton/>;
   return (
     <>
       <Toaster />
