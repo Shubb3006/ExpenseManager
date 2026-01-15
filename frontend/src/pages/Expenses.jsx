@@ -131,30 +131,30 @@ const Expenses = () => {
             </svg>
             Export CSV
           </button>
-        </div>
 
-        <div className="flex gap-2">
-          <input
-            type="text"
-            placeholder="Search Expense"
-            className="input input-bordered w-full"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
+          <div className="flex gap-2">
+            <input
+              type="text"
+              placeholder="Search Expense"
+              className="input input-bordered w-full"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
 
-          <select
-            className="select select-bordered w-full"
-            value={searchCategory}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option value="">Select Category</option>
-            <option value="Food">Food</option>
-            <option value="Travel">Travel</option>
-            <option value="Health & Fitness">Health & Fitness</option>
-            <option value="Shopping">Shopping</option>
-            <option value="Bills">Bills</option>
-            <option value="Other">Other</option>
-          </select>
+            <select
+              className="select select-bordered w-full"
+              value={searchCategory}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="">Select Category</option>
+              <option value="Food">Food</option>
+              <option value="Travel">Travel</option>
+              <option value="Health & Fitness">Health & Fitness</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Bills">Bills</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
         </div>
 
         {filteredExpenses.length === 0 && (
