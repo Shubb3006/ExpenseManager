@@ -4,6 +4,7 @@ import { useAuthStore } from "../store/useAuthStore";
 import { Menu, X } from "lucide-react";
 import NavLinks from "./NavLinks";
 import LogoutModal from "./modals/LogoutModal";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const { authUser, checkAuth } = useAuthStore();
@@ -37,16 +38,19 @@ const Navbar = () => {
         </div>
 
         {/* Right */}
-        <div className="ml-auto">
-          {!authUser ? (
-            <Link to="/login" className="btn btn-primary">
-              Login
-            </Link>
-          ) : (
-            <button onClick={handleLogout} className="btn btn-error">
-              Logout
-            </button>
-          )}
+        <div className="flex sm:gap-10 gap-4">
+          <ThemeToggle />
+          <div className="ml-auto">
+            {!authUser ? (
+              <Link to="/login" className="btn btn-primary">
+                Login
+              </Link>
+            ) : (
+              <button onClick={handleLogout} className="btn btn-error">
+                Logout
+              </button>
+            )}
+          </div>
         </div>
       </div>
 

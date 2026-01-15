@@ -104,7 +104,6 @@ const Expenses = () => {
               </p>
             </div>
           </div>
-
           <button
             onClick={() =>
               exportToCSV(
