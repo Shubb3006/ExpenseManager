@@ -30,9 +30,10 @@ const TodayExpense = () => {
         new Date().toLocaleDateString()
     ) || [];
 
-  const totalExpense = todayExpense.reduce((amount, expense) => {
-    amount + Number(expense.amount);
-  }, 0);
+  const totalExpense = todayExpense.reduce(
+    (amount, expense) => amount + Number(expense.amount),
+    0
+  );
 
   async function handleDelete(expenseId) {
     await deleteExpense(expenseId);
@@ -42,6 +43,7 @@ const TodayExpense = () => {
   async function handleEditExpense(expenseId) {
     setEditingId(expenseId);
   }
+  console.log(totalExpense);
 
   return (
     <div className="bg-base-200 p-5 rounded-lg shadow-md space-y-4">
@@ -56,7 +58,7 @@ const TodayExpense = () => {
 
         {/* Right */}
         <div className="flex items-center gap-2 bg-base-100 px-4 py-2 rounded-full shadow-sm">
-          <span className="text-sm text-gray-500">Total</span>
+          <span className="text-sm text-gray-500">Total :</span>
           <span className="text-lg font-bold text-primary">
             ₹{totalExpense.toLocaleString("en-IN")}
           </span>
