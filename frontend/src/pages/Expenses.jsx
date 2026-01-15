@@ -5,6 +5,7 @@ import EditExpenseModal from "../components/modals/EditExpenseModal";
 import ExpenseList from "../components/ExpenseList";
 import { exportToCSV } from "../lib/exportToCSV";
 import { useAuthStore } from "../store/useAuthStore";
+import { Download } from "lucide-react";
 
 const Expenses = () => {
   const [deletingId, setDeletingId] = useState(null);
@@ -115,20 +116,7 @@ const Expenses = () => {
             disabled={filteredExpenses.length === 0}
             className="tooltip tooltip-up btn btn-outline btn-primary flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 16v-8m0 0l-3 3m3-3l3 3M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"
-              />
-            </svg>
+            <Download size={20} />
             Export CSV
           </button>
 
