@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useAuthStore } from "../../store/useAuthStore";
 import { useNavigate } from "react-router-dom";
+import { Loader2 } from "lucide-react";
 
 const LogoutModal = ({ setIsLogout }) => {
-  const { logout } = useAuthStore();
+  const { logout,isLoggingOut } = useAuthStore();
   async function handleLogout() {
     await logout();
     setIsLogout(false);
@@ -22,8 +23,8 @@ const LogoutModal = ({ setIsLogout }) => {
       <div className="modal-box">
         <p>Do you want to Logout</p>
         <div className="modal-action">
-          <button autoFocus className="btn btn-error " onClick={handleLogout}>
-            Logout
+          <button disabled={isLoggingOut} autoFocus className="btn btn-error " onClick={handleLogout}>
+            {isLoggingOut ? <Loader2 className="animate-spin"/> : "Logout"}
           </button>
           <button className="btn btn-ghost" onClick={() => setIsLogout(false)}>
             Cancel

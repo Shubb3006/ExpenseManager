@@ -8,6 +8,7 @@ export const useAuthStore = create((set) => ({
   isCheckingAuth: false,
   isLoggingIn: false,
   isSigningUp: false,
+  isLoggingOut:false,
 
   checkAuth: async () => {
     set({ isCheckingAuth: true });
@@ -49,6 +50,7 @@ export const useAuthStore = create((set) => ({
   },
 
   logout: async () => {
+    set({isLoggingOut:true})
     try {
       const res = await axiosInstance.post("/auth/logout");
       set({ authUser: null });
@@ -56,6 +58,7 @@ export const useAuthStore = create((set) => ({
     } catch (error) {
       console.log(error);
     } finally {
+      set({isLoggingOut:false})
       useExpenseStore.setState({
         expenses: [],
         gettingExpenses: false,
