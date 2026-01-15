@@ -11,7 +11,7 @@ const Expenses = () => {
   const [editingId, setEditingId] = useState(null);
   const [search, setSearch] = useState("");
 
-  const {authUser}=useAuthStore();
+  const { authUser } = useAuthStore();
   const [searchCategory, setCategory] = useState("");
 
   const { getExpenses, expenses, gettingExpenses, deleteExpense } =
@@ -106,7 +106,12 @@ const Expenses = () => {
 
           <button
             data-tip="Download filtered expenses"
-            onClick={() => exportToCSV(filteredExpenses, `${authUser?.name || "user"}_expenses`)}
+            onClick={() =>
+              exportToCSV(
+                filteredExpenses,
+                `${authUser?.name || "user"}_expenses`
+              )
+            }
             disabled={filteredExpenses.length === 0}
             className="tooltip tooltip-up btn btn-outline btn-primary flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
