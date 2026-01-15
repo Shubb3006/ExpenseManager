@@ -30,11 +30,9 @@ const TodayExpense = () => {
         new Date().toLocaleDateString()
     ) || [];
 
-  const totalExpense = todayExpense.reduce(
-    (amount, expense) => amount + Number(expense.amount),
-    0
-  );
-  console.log(totalExpense);
+  const totalExpense = todayExpense.reduce((amount, expense) => {
+    amount + Number(expense.amount);
+  }, 0);
 
   async function handleDelete(expenseId) {
     await deleteExpense(expenseId);
@@ -54,7 +52,6 @@ const TodayExpense = () => {
           <span className="badge badge-outline text-xs">
             {new Date().toLocaleDateString()}
           </span>
-          
         </div>
 
         {/* Right */}

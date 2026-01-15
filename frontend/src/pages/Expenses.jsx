@@ -144,7 +144,7 @@ const Expenses = () => {
                   name="expense-accordion"
                   defaultChecked={index === 0}
                 />
-              
+
                 {/* Month Header */}
                 <div className="collapse-title flex justify-between items-center text-lg font-semibold">
                   <span>{monthYear}</span>
@@ -157,6 +157,7 @@ const Expenses = () => {
                   <ul className="space-y-3">
                     {monthExpenses.map((expense) => (
                       <ExpenseList
+                        key={expense._id}
                         expense={expense}
                         deletingId={deletingId}
                         setDeletingId={setDeletingId}

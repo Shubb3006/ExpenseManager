@@ -9,10 +9,7 @@ const ExpenseList = ({
   handleDelete,
 }) => {
   return (
-    <li
-      key={expense._id}
-      className="flex flex-col md:flex-row justify-between p-4 bg-base-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200"
-    >
+    <li className="flex flex-col md:flex-row justify-between p-4 bg-base-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
       {expense._id === deletingId ? (
         <div className="w-full flex flex-row justify-between gap-4 p-4 bg-red-100 border border-red-300 rounded-lg shadow-md">
           <p className="text-red-700 font-semibold text-center">
