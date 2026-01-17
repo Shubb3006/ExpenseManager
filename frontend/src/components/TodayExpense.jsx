@@ -29,12 +29,13 @@ const TodayExpense = () => {
         new Date(expense.date).toLocaleDateString() ===
         new Date().toLocaleDateString()
     ) || [];
-
+  const sortedTodayExpenses = [...todayExpense].sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
   const totalExpense = todayExpense.reduce(
     (amount, expense) => amount + Number(expense.amount),
     0
   );
-
   async function handleDelete(expenseId) {
     await deleteExpense(expenseId);
     setDeletingId(null);
@@ -64,7 +65,7 @@ const TodayExpense = () => {
         </div>
       </div>
 
-      {todayExpense.map((expense) => (
+      {sortedTodayExpenses.map((expense) => (
         <ExpenseList
           key={expense._id}
           expense={expense}

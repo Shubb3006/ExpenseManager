@@ -9,15 +9,21 @@ const AddExpense = () => {
     amount: "",
     note: "",
     category: "",
-    date: "",
+    date: new Date().toISOString().split("T")[0],
   });
 
   async function handleSubmit(e) {
     e.preventDefault();
     console.log(formData);
     await addExpense(formData);
-    setFormData({ title: "", amount: "", note: "", category: "", date: "" });
+    setFormData({ title: "", amount: "", note: "", category: "", date: new Date().toISOString().split("T")[0],});
   }
+  useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      date: new Date().toISOString().split("T")[0],
+    }));
+  }, []);
 
   return (
     <div className="min-h-[calc(100vh-60px)] flex items-center justify-center bg-linear-to-br from-base-100 to-base-200 px-4">
@@ -76,6 +82,7 @@ const AddExpense = () => {
           <input
             type="date"
             className="input input-bordered w-full"
+            placeholder="Enter"
             value={formData.date}
             onChange={(e) => setFormData({ ...formData, date: e.target.value })}
           />
