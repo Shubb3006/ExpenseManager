@@ -13,7 +13,7 @@ const BudgetTracker = () => {
   const { expenses, updateBudget, isUpdatingBudget } = useExpenseStore();
   const { budget } = useAuthStore();
 
-  const [givenBudget, setGivenBudget] = useState("");
+  const [givenBudget, setGivenBudget] = useState();
 
   const groupedExpenses = expenses.reduce((groups, expense) => {
     const key = getMonthYear(expense.date);
@@ -31,7 +31,7 @@ const BudgetTracker = () => {
   );
 
   const percentageUsed = Math.min(
-    Math.round((totalExpense / budget) * 100),
+    Math.round((totalExpense / (budget || 25000)) * 100),
     100
   );
 
@@ -47,7 +47,7 @@ const BudgetTracker = () => {
       <div className="flex justify-between items-center">
         <p className="text-lg font-semibold">{currentMonth}</p>
         <span className="badge badge-outline">
-          Budget: ₹{Number(budget).toLocaleString("en-IN")}
+          Budget: ₹{Number(budget || 25000).toLocaleString("en-IN")}
         </span>
       </div>
 

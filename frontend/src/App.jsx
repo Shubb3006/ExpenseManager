@@ -19,6 +19,7 @@ function App() {
     checkAuth();
   }, []);
   if (isCheckingAuth) return <AuthSkeleton />;
+  console.log(authUser);
   return (
     <>
       <Toaster />
