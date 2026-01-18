@@ -10,7 +10,6 @@ const ExpenseList = ({
   handleEditExpense,
   handleDelete,
 }) => {
-  console.log(isDeleting);
   return (
     <li className="flex flex-col md:flex-row justify-between p-4 bg-base-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
       {expense._id === deletingId ? (

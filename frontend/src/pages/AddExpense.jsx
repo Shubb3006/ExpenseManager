@@ -14,9 +14,14 @@ const AddExpense = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(formData);
     await addExpense(formData);
-    setFormData({ title: "", amount: "", note: "", category: "", date: new Date().toISOString().split("T")[0],});
+    setFormData({
+      title: "",
+      amount: "",
+      note: "",
+      category: "",
+      date: new Date().toISOString().split("T")[0],
+    });
   }
   useEffect(() => {
     setFormData((prev) => ({
