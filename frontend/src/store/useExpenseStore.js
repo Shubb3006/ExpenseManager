@@ -9,16 +9,19 @@ export const useExpenseStore = create((set) => ({
   gettingExpenses: false,
   isDeletingExpense: false,
   isEditingExpense: false,
-  isUpdatingBudget:false,
+  isUpdatingBudget: false,
 
   addExpense: async (data) => {
     set({ addingExpense: true });
     try {
       const res = await axiosInstance.post("/expense/addExpense", data);
+      const expense=res.data.expense;
+      console.log(expense)
+
       set((state) => ({
         expenses: [res.data, ...state.expenses],
       }));
-      toast.success("Expense Added");
+      return expense;
     } catch (error) {
       toast.error(error.response?.data?.message);
     } finally {
@@ -78,20 +81,21 @@ export const useExpenseStore = create((set) => ({
     }
   },
 
-  updateBudget:async({budget})=>{
-    set({isUpdatingBudget:true});
+  updateBudget: async ({ budget }) => {
+    set({ isUpdatingBudget: true });
     try {
-      const res=await axiosInstance.patch("/expense/updateBudget",{budget});
-      
-      useAuthStore.getState().setBudget(budget)
+      const res = await axiosInstance.patch("/expense/updateBudget", {
+        budget,
+      });
+
+      useAuthStore.getState().setBudget(budget);
       toast.success("Budget Updated");
       useAuthStore.getState().setBudget(budget);
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
       toast.error(error?.response?.data?.message);
+    } finally {
+      set({ isUpdatingBudget: false });
     }
-    finally{
-    set({isUpdatingBudget:false});
-    }
-  }
+  },
 }));

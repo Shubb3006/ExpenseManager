@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useExpenseStore } from "../store/useExpenseStore";
 import { LoaderIcon } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const AddExpense = () => {
-  const { addExpense, addingExpense } = useExpenseStore();
+  const { addExpense, addingExpense, deleteExpense } = useExpenseStore();
   const [formData, setFormData] = useState({
     title: "",
     amount: "",
@@ -14,15 +15,60 @@ const AddExpense = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await addExpense(formData);
-    setFormData({
-      title: "",
-      amount: "",
-      note: "",
-      category: "",
-      date: new Date().toISOString().split("T")[0],
-    });
+    const addedExpense = await addExpense(formData);
+    if (addedExpense) {
+      setFormData({
+        title: "",
+        amount: "",
+        note: "",
+        category: "",
+        date: new Date().toISOString().split("T")[0],
+      });
+
+      // toast((t) => (
+      //   <span>
+      //     Expense Saved
+      //     <button
+      //       onClick={() => {
+      //         toast.dismiss(t.id);
+      //         deleteExpense(addedExpense._id);
+      //       }}
+      //     >
+      //       Undo
+      //     </button>
+      //   </span>
+      // ));
+
+      toast(
+        (t) => (
+          <div
+            className={`flex items-center justify-between gap-4 
+          
+          ${t.visible ? "animate-enter" : "animate-leave"}`}
+          >
+            <div>
+              <p className="font-medium text-lg">Expense added</p>
+              <p className="text-lg text-gray-500">
+                {addedExpense.title} • ₹{addedExpense.amount}
+              </p>
+            </div>
+
+            <button
+              className="btn btn-sm btn-error rounded-lg"
+              onClick={() => {
+                deleteExpense(addedExpense._id);
+                toast.dismiss(t.id);
+              }}
+            >
+              Undo
+            </button>
+          </div>
+        ),
+        { duration: 3000 }
+      );
+    }
   }
+
   useEffect(() => {
     setFormData((prev) => ({
       ...prev,
