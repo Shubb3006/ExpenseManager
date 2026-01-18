@@ -9,6 +9,7 @@ import { Download } from "lucide-react";
 
 const Expenses = () => {
   const [deletingId, setDeletingId] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [editingId, setEditingId] = useState(null);
   const [search, setSearch] = useState("");
 
@@ -77,8 +78,11 @@ const Expenses = () => {
 
   // 4️⃣ Handlers
   async function handleDelete(expenseId) {
+    setIsDeleting(true);
+
     await deleteExpense(expenseId);
     setDeletingId(null);
+    setIsDeleting(false);
   }
 
   async function handleEditExpense(expenseId) {
@@ -179,6 +183,8 @@ const Expenses = () => {
                         key={expense._id}
                         expense={expense}
                         deletingId={deletingId}
+                        isDeleting={isDeleting}
+                        setIsDeleting={setIsDeleting}
                         setDeletingId={setDeletingId}
                         handleDelete={handleDelete}
                         handleEditExpense={handleEditExpense}

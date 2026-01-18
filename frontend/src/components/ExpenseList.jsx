@@ -1,13 +1,16 @@
 import React from "react";
-import { Pencil, Trash } from "lucide-react";
+import { Pencil, Trash, Loader2 } from "lucide-react";
 import { CATEGORY_BADGES } from "../constants";
 const ExpenseList = ({
   expense,
   deletingId,
+  isDeleting,
+  setIsDeleting,
   setDeletingId,
   handleEditExpense,
   handleDelete,
 }) => {
+  console.log(isDeleting);
   return (
     <li className="flex flex-col md:flex-row justify-between p-4 bg-base-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
       {expense._id === deletingId ? (
@@ -18,10 +21,15 @@ const ExpenseList = ({
           <div className="flex justify-center gap-4">
             <button
               autoFocus
+              disable={isDeleting}
               className="btn btn-error btn-sm hover:scale-105 transition-transform"
               onClick={() => handleDelete(deletingId)}
             >
-              Yes
+              {isDeleting ? (
+                <Loader2 className="animate-spin text-white" />
+              ) : (
+                "Yes"
+              )}
             </button>
             <button
               className="btn btn-sm hover:scale-105 transition-transform"
