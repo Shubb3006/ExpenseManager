@@ -50,6 +50,8 @@ const Expenses = () => {
     (a, b) => new Date(b.date) - new Date(a.date)
   );
 
+  console.log(filteredExpenses)
+
   // 2️⃣ Group sorted expenses by month-year
   const groupedExpenses = sortedExpenses.reduce((groups, expense) => {
     const date = new Date(expense.date);

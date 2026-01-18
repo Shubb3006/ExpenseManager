@@ -14,7 +14,7 @@ export const addExpense = async (req, res) => {
     if (category && !EXPENSE_CATEGORIES.includes(category.trim()))
       return res.status(400).json({ message: "Invalid Category" });
 
-    const expenseDate = date ? new Date(date) : new Date();
+    const expenseDate = date ? new Date(date).toISOString() : new Date().toISOString();
 
     const expense = await Expense.create({
       userId,
