@@ -51,6 +51,13 @@ export const useAuthStore = create((set) => ({
   },
 
   setBudget: (budget) => set({ budget }),
+  getBudget:async()=>{
+    try{
+      const res=await axiosInstance.get("/auth/check");
+      set({budget:res.data.budget})
+    }catch(error){
+      toast.error(error.response.data.message);
+    }},
 
 
   logout: async () => {
@@ -58,6 +65,7 @@ export const useAuthStore = create((set) => ({
     try {
       const res = await axiosInstance.post("/auth/logout");
       set({ authUser: null });
+      set({budget:0})
       toast.success("Logout Success");
     } catch (error) {
       console.log(error);

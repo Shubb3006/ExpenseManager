@@ -82,11 +82,13 @@ export const useExpenseStore = create((set) => ({
     set({isUpdatingBudget:true});
     try {
       const res=await axiosInstance.patch("/expense/updateBudget",{budget});
+      
+      useAuthStore.getState().setBudget(budget)
       toast.success("Budget Updated");
       useAuthStore.getState().setBudget(budget);
     } catch (error) {
       console.log(error.message)
-      toast.error(error.response?.data?.message);
+      toast.error(error?.response?.data?.message);
     }
     finally{
     set({isUpdatingBudget:false});
