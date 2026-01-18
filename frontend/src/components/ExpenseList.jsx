@@ -21,7 +21,13 @@ const ExpenseList = ({
             <button
               autoFocus
               disabled={isDeleting}
-              className="btn btn-error btn-sm hover:scale-105 transition-transform"
+              className={`btn btn-error btn-sm transition-transform
+                ${
+                  isDeleting
+                    ? "bg-error text-white opacity-80 cursor-not-allowed"
+                    : "hover:scale-105"
+                }
+              `}
               onClick={() => handleDelete(deletingId)}
             >
               {isDeleting ? (

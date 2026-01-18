@@ -12,6 +12,7 @@ const getMonthYear = (date) =>
 const TodayExpense = () => {
   const { expenses, deleteExpense } = useExpenseStore();
   const [deletingId, setDeletingId] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(null);
   const [editingId, setEditingId] = useState(null);
 
   const groupedExpenses = expenses.reduce((groups, expense) => {
@@ -37,7 +38,9 @@ const TodayExpense = () => {
     0
   );
   async function handleDelete(expenseId) {
+    setIsDeleting(true);
     await deleteExpense(expenseId);
+    setIsDeleting(false);
     setDeletingId(null);
   }
 
@@ -70,6 +73,8 @@ const TodayExpense = () => {
           key={expense._id}
           expense={expense}
           deletingId={deletingId}
+          isDeleting={isDeleting}
+          setIsDeleting={setIsDeleting}
           setDeletingId={setDeletingId}
           handleDelete={handleDelete}
           handleEditExpense={handleEditExpense}
