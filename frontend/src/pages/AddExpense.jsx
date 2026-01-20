@@ -92,7 +92,7 @@ const AddExpense = () => {
 
             {/* Action */}
             <button
-              className="text-sm font-medium text-error hover:underline"
+              className="text-sm btn btn-error btn-sm "
               onClick={() => {
                 deleteExpense(addedExpense._id);
                 toast.dismiss(t.id);
