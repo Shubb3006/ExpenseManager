@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useAuthStore } from "../../store/useAuthStore";
-import { useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 
 const LogoutModal = ({ setIsLogout }) => {

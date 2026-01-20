@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useExpenseStore } from "../store/useExpenseStore";
-import { LoaderIcon } from "react-hot-toast";
+import { LoaderIcon, Check } from "lucide-react";
 import toast from "react-hot-toast";
 
 const AddExpense = () => {
@@ -39,22 +39,60 @@ const AddExpense = () => {
       //   </span>
       // ));
 
+      // toast(
+      //   (t) => (
+      //     <div
+      //       className={`flex items-center justify-between gap-4
+
+      //     ${t.visible ? "animate-enter" : "animate-leave"}`}
+      //     >
+      //       <div className="flex gap-4">
+      //         <Check />
+      //         <div>
+      //           <p className="font-medium text-lg">Expense added</p>
+      //           <p className="text-lg text-gray-500">
+      //             {addedExpense.title} • ₹{addedExpense.amount}
+      //           </p>
+      //         </div>
+
+      //         <button
+      //           className="btn btn-sm btn-error rounded-lg"
+      //           onClick={() => {
+      //             deleteExpense(addedExpense._id);
+      //             toast.dismiss(t.id);
+      //           }}
+      //         >
+      //           Undo
+      //         </button>
+      //       </div>
+      //     </div>
+      //   ),
+      //   { duration: 3000 }
+      // );
       toast(
         (t) => (
           <div
-            className={`flex items-center justify-between gap-4 
-          
-          ${t.visible ? "animate-enter" : "animate-leave"}`}
+            className={`flex items-center gap-4 p-2 w-full max-w-sm
+            ${t.visible ? "animate-enter" : "animate-leave"}`}
           >
-            <div>
-              <p className="font-medium text-lg">Expense added</p>
-              <p className="text-lg text-gray-500">
+            {/* Icon */}
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-success/20 text-success">
+              <Check className="h-5 w-5" />
+            </div>
+
+            {/* Content */}
+            <div className="flex-1">
+              <p className="font-semibold text-base text-base-content">
+                Expense added
+              </p>
+              <p className="text-sm text-base-content/60">
                 {addedExpense.title} • ₹{addedExpense.amount}
               </p>
             </div>
 
+            {/* Action */}
             <button
-              className="btn btn-sm btn-error rounded-lg"
+              className="text-sm font-medium text-error hover:underline"
               onClick={() => {
                 deleteExpense(addedExpense._id);
                 toast.dismiss(t.id);
