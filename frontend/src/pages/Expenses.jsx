@@ -202,7 +202,7 @@ const Expenses = () => {
 
       {/* Edit Modal */}
       {editingId && (
-        <EditExpenseModal expenseId={editingId} setEditingId={setEditingId} />
+        <EditExpenseModal expenseId={editingId} editingId={editingId} setEditingId={setEditingId} />
       )}
     </div>
   );

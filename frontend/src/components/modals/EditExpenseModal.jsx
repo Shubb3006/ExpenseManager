@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { LoaderIcon } from "lucide-react";
 import { useExpenseStore } from "../../store/useExpenseStore";
 
-const EditExpenseModal = ({ expenseId, setEditingId }) => {
+const EditExpenseModal = ({ expenseId, editingId, setEditingId }) => {
   const { expenses, editExpense, isEditingExpense } = useExpenseStore();
   const expense = expenses.find((expense) => expense._id === expenseId);
   const [formData, setFormData] = useState({
@@ -42,7 +42,9 @@ const EditExpenseModal = ({ expenseId, setEditingId }) => {
     setEditingId(null);
   }
   return (
-    <div className={`modal modal-open`}>
+    <div
+      className={`modal modal-open`}
+    >
       <div
         className="modal-backdrop backdrop-blur-sm bg-black/40"
         onClick={() => setEditingId(null)}
