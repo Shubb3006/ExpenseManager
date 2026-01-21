@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { LoaderIcon } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useExpenseStore } from "../../store/useExpenseStore";
 
 const EditExpenseModal = ({ expenseId, editingId, setEditingId }) => {
@@ -42,9 +42,7 @@ const EditExpenseModal = ({ expenseId, editingId, setEditingId }) => {
     setEditingId(null);
   }
   return (
-    <div
-      className={`modal modal-open`}
-    >
+    <div className={`modal modal-open`}>
       <div
         className="modal-backdrop backdrop-blur-sm bg-black/40"
         onClick={() => setEditingId(null)}
@@ -110,11 +108,7 @@ const EditExpenseModal = ({ expenseId, editingId, setEditingId }) => {
 
           <div className="modal-action">
             <button className="btn btn-primary " disabled={isEditingExpense}>
-              {isEditingExpense ? (
-                <LoaderIcon className="animate-spin" />
-              ) : (
-                "Save"
-              )}
+              {isEditingExpense ? <Loader2 className="animate-spin" /> : "Save"}
             </button>
             <button
               className="btn btn-ghost"
