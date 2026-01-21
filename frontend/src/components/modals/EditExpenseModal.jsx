@@ -42,7 +42,11 @@ const EditExpenseModal = ({ expenseId, setEditingId }) => {
     setEditingId(null);
   }
   return (
-    <div className="modal modal-open">
+    <div className={`modal modal-open`}>
+      <div
+        className="modal-backdrop backdrop-blur-sm bg-black/40"
+        onClick={() => setEditingId(null)}
+      />
       <div className="modal-box">
         <form onSubmit={handleSubmit} className="card-body gap-4">
           <h2 className="text-2xl font-bold text-center text-primary">
