@@ -81,7 +81,7 @@ const AddExpense = () => {
             </div>
 
             {/* Content */}
-            <div className="flex-1">
+            <div className="flex-1 text-base-content">
               <p className="font-semibold text-base text-base-content">
                 Expense added
               </p>
