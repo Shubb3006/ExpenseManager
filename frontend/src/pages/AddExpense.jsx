@@ -72,7 +72,7 @@ const AddExpense = () => {
       toast(
         (t) => (
           <div
-            className={`flex items-center gap-4 p-2 w-full max-w-sm
+            className={`flex items-center bg-base-100 gap-4 p-2 w-full max-w-sm
             ${t.visible ? "animate-enter" : "animate-leave"}`}
           >
             {/* Icon */}
