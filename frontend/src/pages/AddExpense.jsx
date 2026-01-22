@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useExpenseStore } from "../store/useExpenseStore";
-import { LoaderIcon, Check } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
 
 const AddExpense = () => {
@@ -72,7 +72,7 @@ const AddExpense = () => {
       toast(
         (t) => (
           <div
-            className={`flex items-center bg-base-100 gap-4 p-2 w-full max-w-sm
+            className={`flex items-center  gap-4 p-2 w-full max-w-sm
             ${t.visible ? "animate-enter" : "animate-leave"}`}
           >
             {/* Icon */}
@@ -81,11 +81,9 @@ const AddExpense = () => {
             </div>
 
             {/* Content */}
-            <div className="flex-1 text-base-content">
-              <p className="font-semibold text-base text-base-content">
-                Expense added
-              </p>
-              <p className="text-sm text-base-content/60">
+            <div className="flex-1 ">
+              <p className="font-semibold">Expense added</p>
+              <p className="text-sm">
                 {addedExpense.title} • ₹{addedExpense.amount}
               </p>
             </div>
@@ -181,7 +179,7 @@ const AddExpense = () => {
             disabled={addingExpense}
           >
             {addingExpense ? (
-              <LoaderIcon className="animate-spin" />
+              <Loader2 className="animate-spin" />
             ) : (
               "Add Expense"
             )}
