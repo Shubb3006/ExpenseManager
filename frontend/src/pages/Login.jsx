@@ -103,6 +103,7 @@ const Login = () => {
               />
               <button
                 type="button"
+                aria-label="Toggle Password Visibility"
                 onClick={(e) => setShowPassword(!showPassword)}
               >
                 {showPassword ? (
@@ -118,6 +119,7 @@ const Login = () => {
           </div>
 
           <button
+          aria-label="Login"
             className="btn btn-primary w-full mt-4"
             disabled={
               isLoggingIn ||

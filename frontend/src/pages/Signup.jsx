@@ -139,6 +139,7 @@ const Signup = () => {
                 className="grow"
               />
               <button
+              aria-label="Toggle Password Visibility"
                 type="button"
                 onClick={(e) => setShowPassword(!showPassword)}
               >
@@ -155,6 +156,7 @@ const Signup = () => {
           </div>
 
           <button
+          aria-label="Signup"
             className="btn btn-primary w-full mt-4"
             disabled={
               isSigningUp ||

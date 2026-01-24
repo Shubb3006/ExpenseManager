@@ -90,6 +90,7 @@ const AddExpense = () => {
 
             {/* Action */}
             <button
+            aria-label="undo saving expense"
               className="text-sm btn btn-error btn-sm "
               onClick={() => {
                 deleteExpense(addedExpense._id);
@@ -119,6 +120,7 @@ const AddExpense = () => {
           <h2 className="text-2xl font-bold text-center text-primary">
             Add Expense
           </h2>
+          <label htmlFor="title" className="sr-only" />
 
           <input
             type="text"
@@ -131,6 +133,7 @@ const AddExpense = () => {
             }
           />
 
+          <label htmlFor="amount" className="sr-only" />
           <input
             type="number"
             aria-label="Amount"
@@ -142,6 +145,7 @@ const AddExpense = () => {
             }
           />
 
+          <label htmlFor="note" className="sr-only" />
           <input
             type="text"
             aria-label="Note"
@@ -151,6 +155,7 @@ const AddExpense = () => {
             onChange={(e) => setFormData({ ...formData, note: e.target.value })}
           />
 
+          <label htmlFor="category" className="sr-only" />
           <select
             className="select select-bordered w-full"
             aria-label="Category"
@@ -170,6 +175,7 @@ const AddExpense = () => {
             <option value="Other">Other</option>
           </select>
 
+          <label htmlFor="date" className="sr-only" />
           <input
             type="date"
             aria-label="Date"
@@ -180,6 +186,7 @@ const AddExpense = () => {
           />
 
           <button
+          aria-label="save expense"
             className="btn btn-primary w-full mt-2"
             disabled={addingExpense}
           >
