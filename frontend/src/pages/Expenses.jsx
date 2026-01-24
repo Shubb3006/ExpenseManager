@@ -61,22 +61,40 @@ const Expenses = () => {
   );
 
   // 2️⃣ Group sorted expenses by month-year
-  const groupedExpenses = sortedExpenses.reduce((groups, expense) => {
-    const date = new Date(expense.date);
-    const monthYear = date.toLocaleString("default", {
-      month: "long",
-      year: "numeric",
-    });
+  // const groupedExpenses = sortedExpenses.reduce((groups, expense) => {
+  //   const date = new Date(expense.date);
+  //   const monthYear = date.toLocaleString("default", {
+  //     month: "long",
+  //     year: "numeric",
+  //   });
+  //   if (!groups[monthYear]) groups[monthYear] = [];
+  //   groups[monthYear].push(expense);
 
-    if (!groups[monthYear]) groups[monthYear] = [];
-    groups[monthYear].push(expense);
+  //   return groups;
+  // }, {});
 
-    return groups;
-  }, {});
+  const groupedExpenses = useMemo(
+    () =>
+      sortedExpenses.reduce((groups, expense) => {
+        const date = new Date(expense.date);
+        const monthYear = date.toLocaleString("default", {
+          month: "long",
+          year: "numeric",
+        });
+        if (!groups[monthYear]) groups[monthYear] = [];
+        groups[monthYear].push(expense);
+
+        return groups;
+      }, {}),
+    [sortedExpenses]
+  );
 
   // 3️⃣ Helpers
   const getMonthlyTotal = (expenses) =>
     expenses.reduce((sum, exp) => sum + Number(exp.amount), 0);
+
+  //  const getMonthlyTotal =useMemo(()=>(expenses) =>
+  //   expenses.reduce((sum, exp) => sum + Number(exp.amount), 0),[expenses]) 
 
   // const totalExpense = filteredExpenses.reduce((sum, exp) => sum + Number(exp.amount), 0)
   const totalExpense = useMemo(
