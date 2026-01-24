@@ -17,10 +17,10 @@ const Navbar = () => {
 
   const location = useLocation();
   const getTranslateClass = () => {
-    if (location.pathname === "/") return "translate-x-[19%]";
-    if (location.pathname.startsWith("/expenses")) return "translate-x-[118%]";
+    if (location.pathname === "/") return "w-32 translate-x-[19%]";
+    if (location.pathname.startsWith("/expenses")) return "w-32 translate-x-[118%]";
     if (location.pathname.startsWith("/addexpense"))
-      return "translate-x-[219%]";
+      return "w-40 translate-x-[175%]";
     else return "sm:hidden";
   };
 
@@ -43,7 +43,7 @@ const Navbar = () => {
         </div>
         <div className="absolute bottom-0 left-0 w-full h-[2px] bg-base-300">
           <div
-            className={`hidden sm:block h-full w-32 bg-primary transition-all duration-300 ${getTranslateClass()}`}
+            className={`hidden sm:block h-full bg-primary transition-all duration-300 ${getTranslateClass()}`}
           />
         </div>
 
