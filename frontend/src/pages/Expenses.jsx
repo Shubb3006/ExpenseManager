@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useExpenseStore } from "../store/useExpenseStore";
 import ExpensesSkeleton from "../components/skeletons/ExpensesSkeletons";
 import EditExpenseModal from "../components/modals/EditExpenseModal";
@@ -31,26 +31,34 @@ const Expenses = () => {
     return () => removeEventListener("keydown", handleKey);
   }, []);
 
-  if (gettingExpenses) return <ExpensesSkeleton />;
+  // const filteredExpenses = expenses.filter((expense) => {
+  //   const searchtext = search.trim().toLowerCase();
+  //   const titleText = expense?.title?.trim().toLowerCase();
+  //   const matchesSearch = searchtext ? titleText.includes(searchtext) : true;
 
-  const filteredExpenses = expenses.filter((expense) => {
-    const searchtext = search.trim().toLowerCase();
-    const titleText = expense?.title?.trim().toLowerCase();
-    const matchesSearch = searchtext ? titleText.includes(searchtext) : true;
+  //   const matchesCategory = searchCategory
+  //     ? expense.category === searchCategory
+  //     : true;
 
-    const matchesCategory = searchCategory
-      ? expense.category === searchCategory
-      : true;
+  //   return matchesSearch && matchesCategory;
+  // });
 
-    return matchesSearch && matchesCategory;
-  });
+  const filteredExpenses = useMemo(() => {
+    return expenses.filter((expense) => {
+      const searchtext = search.trim().toLowerCase();
+      const titleText = expense?.title?.trim().toLowerCase();
+      const matchesSearch = searchtext ? titleText.includes(searchtext) : true;
+      const matchesCategory = searchCategory
+        ? expense.category === searchCategory
+        : true;
+      return matchesSearch && matchesCategory;
+    });
+  }, [expenses, search, searchCategory]);
 
   // 1️⃣ Sort all expenses by latest date first
   const sortedExpenses = [...filteredExpenses].sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   );
-
-  console.log(filteredExpenses)
 
   // 2️⃣ Group sorted expenses by month-year
   const groupedExpenses = sortedExpenses.reduce((groups, expense) => {
@@ -70,26 +78,44 @@ const Expenses = () => {
   const getMonthlyTotal = (expenses) =>
     expenses.reduce((sum, exp) => sum + Number(exp.amount), 0);
 
-  const totalExpense = filteredExpenses.reduce(
-    (sum, exp) => sum + Number(exp.amount),
-    0
+  // const totalExpense = filteredExpenses.reduce((sum, exp) => sum + Number(exp.amount), 0)
+  const totalExpense = useMemo(
+    () => filteredExpenses.reduce((sum, exp) => sum + Number(exp.amount), 0),
+    [filteredExpenses]
   );
+
   const numberOfMonths = Object.keys(groupedExpenses).length;
   const averageExpense =
     numberOfMonths > 0 ? Math.round(totalExpense / numberOfMonths) : 0;
 
   // 4️⃣ Handlers
-  async function handleDelete(expenseId) {
-    setIsDeleting(true);
+  const handleDelete = useCallback(
+    async (expenseId) => {
+      setIsDeleting(true);
 
-    await deleteExpense(expenseId);
-    setDeletingId(null);
-    setIsDeleting(false);
-  }
+      await deleteExpense(expenseId);
+      setDeletingId(null);
+      setIsDeleting(false);
+    },
+    [deleteExpense]
+  );
 
-  async function handleEditExpense(expenseId) {
+  // async function handleDelete(expenseId) {
+  //   setIsDeleting(true);
+
+  //   await deleteExpense(expenseId);
+  //   setDeletingId(null);
+  //   setIsDeleting(false);
+  // }
+  const handleEditExpense = useCallback(async (expenseId) => {
     setEditingId(expenseId);
-  }
+  }, []);
+
+  // async function handleEditExpense(expenseId) {
+  //   setEditingId(expenseId);
+  // }
+
+  if (gettingExpenses) return <ExpensesSkeleton />;
 
   return (
     <div className="max-w-2xl mx-auto space-y-3">
@@ -202,7 +228,11 @@ const Expenses = () => {
 
       {/* Edit Modal */}
       {editingId && (
-        <EditExpenseModal expenseId={editingId} editingId={editingId} setEditingId={setEditingId} />
+        <EditExpenseModal
+          expenseId={editingId}
+          editingId={editingId}
+          setEditingId={setEditingId}
+        />
       )}
     </div>
   );

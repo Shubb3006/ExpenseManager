@@ -7,35 +7,57 @@ import { useAuthStore } from "../store/useAuthStore";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
-
+  const [emailErr, setEmailErr] = useState("");
+  const [passwordErr, setPasswordErr] = useState("");
   const { login, isLoggingIn } = useAuthStore();
 
-  const validateform = () => {
+  const handleEmailError = () => {
     if (!formData.email.trim()) {
-      toast.error("Email is Required");
-      return false;
+      setEmailErr("Email is Required");
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      setEmailErr("Invalid Email Format");
     }
-    if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      toast.error("Invalid Email Format");
-      return false;
-    }
+  };
+
+  const handlePasswordError = () => {
     if (!formData.password.trim()) {
-      toast.error("Password is Required");
-      return false;
+      setPasswordErr("Password Is Required");
+    } else if (formData.password.trim().length < 6) {
+      setPasswordErr("Password must be at least 6 characters");
     }
-    if (formData.password.trim().length < 6) {
-      toast.error("Password must be of min 6 characters");
-      return false;
+  };
+
+  const validateForm = () => {
+    let emailError = "";
+    let passwordError = "";
+
+    if (!formData.email.trim()) {
+      emailError = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      emailError = "Invalid email format";
     }
 
-    return true;
+    if (!formData.password.trim()) {
+      passwordError = "Password is required";
+    } else if (formData.password.length < 6) {
+      passwordError = "Password must be at least 6 characters";
+    }
+
+    setEmailErr(emailError);
+    setPasswordErr(passwordError);
+
+    return !emailError && !passwordError;
   };
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const success = validateform();
-    if (success) login(formData);
+    if (!validateForm()) {
+      toast.error("Please fix the errors");
+      return;
+    }
+    login(formData);
   }
+
   return (
     <div className="min-h-[calc(100vh-60px)] flex justify-center items-center bg-base-200">
       <div className="card w-full max-w-md bg-base-100 sbhadow-2xl">
@@ -50,12 +72,16 @@ const Login = () => {
               <input
                 type="text"
                 value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                onBlur={handleEmailError}
+                onChange={(e) => {
+                  setFormData({ ...formData, email: e.target.value });
+                  setEmailErr("");
+                }}
                 placeholder="Email"
               />
             </label>
+
+            {emailErr && <p className="text-error text-sm mt-1">{emailErr}</p>}
           </div>
           <div className="form-control">
             <label
@@ -65,10 +91,12 @@ const Login = () => {
               <Lock />
               <input
                 type={showPassword ? "text" : "password"}
+                onBlur={handlePasswordError}
                 value={formData.password}
-                onChange={(e) =>
-                  setFormData({ ...formData, password: e.target.value })
-                }
+                onChange={(e) => {
+                  setFormData({ ...formData, password: e.target.value });
+                  setPasswordErr("");
+                }}
                 placeholder="Password"
               />
               <button
@@ -82,11 +110,20 @@ const Login = () => {
                 )}
               </button>
             </label>
+            {passwordErr && (
+              <p className="text-error text-sm mt-1">{passwordErr}</p>
+            )}
           </div>
 
           <button
             className="btn btn-primary w-full mt-4"
-            disabled={isLoggingIn}
+            disabled={
+              isLoggingIn ||
+              !formData.email.trim() ||
+              !formData.password.trim() ||
+              passwordErr ||
+              emailErr
+            }
           >
             {isLoggingIn ? <Loader2 className="animate-spin" /> : "Log In"}
           </button>
