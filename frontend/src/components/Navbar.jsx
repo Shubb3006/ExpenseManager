@@ -21,7 +21,7 @@ const Navbar = () => {
     if (location.pathname.startsWith("/expenses")) return "translate-x-[118%]";
     if (location.pathname.startsWith("/addexpense"))
       return "translate-x-[219%]";
-    return "translate-x-0";
+    else return "sm:hidden";
   };
 
   return (

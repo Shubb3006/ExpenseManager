@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 const NavLinks = ({ onClick }) => {
   return (
     <div className="flex">
-      {/* Links */}
-      <div className="flex">
+     
         <Link onClick={onClick} to="/" className="btn btn-ghost w-32">
-          Home
+         Home
         </Link>
         <Link onClick={onClick} to="/expenses" className="btn btn-ghost w-32">
           Expenses
@@ -15,7 +14,6 @@ const NavLinks = ({ onClick }) => {
         <Link onClick={onClick} to="/addexpense" className="btn btn-ghost w-32">
           Add Expense
         </Link>
-      </div>
     </div>
   );
 };
