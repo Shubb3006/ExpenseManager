@@ -32,11 +32,10 @@ const Signup = () => {
     }
   };
 
-
   const handleNameErr = () => {
     if (!formData.name.trim()) {
       setNameErr("Name Is Required");
-    } 
+    }
   };
 
   const validateForm = () => {
@@ -89,6 +88,7 @@ const Signup = () => {
               <Mail className="w-5 h-5 opacity-70" />
               <input
                 type="text"
+                aria-label="Email"
                 onBlur={handleEmailError}
                 value={formData.email}
                 onChange={(e) => {
@@ -108,6 +108,7 @@ const Signup = () => {
               <User className="w-5 h-5 opacity-70" />
               <input
                 type="text"
+                aria-label="Name"
                 value={formData.name}
                 onBlur={handleNameErr}
                 onChange={(e) => {
@@ -128,6 +129,7 @@ const Signup = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 value={formData.password}
+                aria-label="Password"
                 onBlur={handlePasswordError}
                 onChange={(e) => {
                   setFormData({ ...formData, password: e.target.value });

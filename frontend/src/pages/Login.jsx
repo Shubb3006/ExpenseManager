@@ -72,6 +72,7 @@ const Login = () => {
               <input
                 type="text"
                 value={formData.email}
+            aria-label="Email"
                 onBlur={handleEmailError}
                 onChange={(e) => {
                   setFormData({ ...formData, email: e.target.value });
@@ -91,6 +92,7 @@ const Login = () => {
               <Lock />
               <input
                 type={showPassword ? "text" : "password"}
+            aria-label="Password"
                 onBlur={handlePasswordError}
                 value={formData.password}
                 onChange={(e) => {

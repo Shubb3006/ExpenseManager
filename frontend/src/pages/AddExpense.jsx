@@ -122,6 +122,7 @@ const AddExpense = () => {
 
           <input
             type="text"
+            aria-label="Title"
             placeholder="Title"
             className="input input-bordered w-full"
             value={formData.title}
@@ -132,6 +133,7 @@ const AddExpense = () => {
 
           <input
             type="number"
+            aria-label="Amount"
             placeholder="Amount"
             className="input input-bordered w-full"
             value={formData.amount}
@@ -142,6 +144,7 @@ const AddExpense = () => {
 
           <input
             type="text"
+            aria-label="Note"
             placeholder="Note"
             className="input input-bordered w-full"
             value={formData.note}
@@ -150,6 +153,7 @@ const AddExpense = () => {
 
           <select
             className="select select-bordered w-full"
+            aria-label="Category"
             value={formData.category}
             onChange={(e) =>
               setFormData({ ...formData, category: e.target.value })
@@ -168,6 +172,7 @@ const AddExpense = () => {
 
           <input
             type="date"
+            aria-label="Date"
             className="input input-bordered w-full"
             placeholder="Enter"
             value={formData.date}
