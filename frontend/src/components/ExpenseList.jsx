@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Pencil, Trash, Loader2 } from "lucide-react";
 import { CATEGORY_BADGES } from "../constants";
 const ExpenseList = ({
@@ -9,6 +9,7 @@ const ExpenseList = ({
   handleEditExpense,
   handleDelete,
 }) => {
+  console.log("redner again");
   return (
     <li
       key={expense.id}
@@ -102,4 +103,4 @@ const ExpenseList = ({
   );
 };
 
-export default ExpenseList;
+export default memo(ExpenseList);
