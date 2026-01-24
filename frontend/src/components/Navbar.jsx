@@ -24,6 +24,7 @@ const Navbar = () => {
       {/* Left */}
       <div className="flex">
         <button
+        aria-label="show Navbar"
           className="block sm:hidden flex-1"
           onClick={() => setShowNav(!showNav)}
         >
@@ -46,7 +47,7 @@ const Navbar = () => {
                 Login
               </Link>
             ) : (
-              <button onClick={handleLogout} className="btn btn-error">
+              <button aria-label="logout button" onClick={handleLogout} className="btn btn-error">
                 Logout
               </button>
             )}

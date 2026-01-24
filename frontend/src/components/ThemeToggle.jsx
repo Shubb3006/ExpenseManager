@@ -16,6 +16,7 @@ const ThemeToggle = () => {
       <Sun size={18} />
 
       <input
+        aria-label="Theme toggler"
         type="checkbox"
         className="toggle toggle-sm"
         checked={theme === "dark"}
