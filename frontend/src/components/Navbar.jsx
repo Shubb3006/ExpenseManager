@@ -42,6 +42,7 @@ const Navbar = () => {
             <NavLinks />
           </div>
         </div>
+
         <div className="absolute bottom-0 left-0 w-full h-[2px] bg-base-300">
           <div
             className={`hidden sm:block h-full bg-primary transition-all duration-300 ${getTranslateClass()}`}
