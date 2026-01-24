@@ -17,10 +17,11 @@ const Navbar = () => {
 
   const location = useLocation();
   const getTranslateClass = () => {
-    if (location.pathname === "/") return "w-32 translate-x-[19%]";
-    if (location.pathname.startsWith("/expenses")) return "w-32 translate-x-[118%]";
+    if (location.pathname === "/") return "w-25 translate-x-[24%]";
+    if (location.pathname.startsWith("/expenses"))
+      return "w-28 translate-x-[110%]";
     if (location.pathname.startsWith("/addexpense"))
-      return "w-40 translate-x-[175%]";
+      return "w-32 translate-x-[184%]";
     else return "sm:hidden";
   };
 
