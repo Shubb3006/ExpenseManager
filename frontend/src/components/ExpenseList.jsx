@@ -9,7 +9,6 @@ const ExpenseList = ({
   handleEditExpense,
   handleDelete,
 }) => {
-  console.log("redner again");
   return (
     <li
       key={expense.id}
