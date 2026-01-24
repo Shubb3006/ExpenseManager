@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
 import { Menu, X } from "lucide-react";
 import NavLinks from "./NavLinks";
@@ -11,11 +11,11 @@ const Navbar = () => {
   const [isLogout, setIsLogout] = useState(false);
   const [showNav, setShowNav] = useState(false);
 
-
   function handleLogout() {
     setIsLogout(true);
   }
 
+  const location = useLocation();
 
   return (
     <div className="bg-base-100 py-2 shadow-md px-6 sticky top-0 z-1 flex flex-col">
@@ -31,7 +31,7 @@ const Navbar = () => {
         </button>
 
         <div className="flex-1 gap-4">
-          <div className="hidden sm:block">
+          <div className="hidden sm:block relative w-fit">
             <NavLinks />
           </div>
         </div>
@@ -45,7 +45,11 @@ const Navbar = () => {
                 Login
               </Link>
             ) : (
-              <button aria-label="logout button" onClick={handleLogout} className="btn btn-error">
+              <button
+                aria-label="logout button"
+                onClick={handleLogout}
+                className="btn btn-error"
+              >
                 Logout
               </button>
             )}
