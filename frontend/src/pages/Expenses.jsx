@@ -94,7 +94,7 @@ const Expenses = () => {
     expenses.reduce((sum, exp) => sum + Number(exp.amount), 0);
 
   //  const getMonthlyTotal =useMemo(()=>(expenses) =>
-  //   expenses.reduce((sum, exp) => sum + Number(exp.amount), 0),[expenses]) 
+  //   expenses.reduce((sum, exp) => sum + Number(exp.amount), 0),[expenses])
 
   // const totalExpense = filteredExpenses.reduce((sum, exp) => sum + Number(exp.amount), 0)
   const totalExpense = useMemo(

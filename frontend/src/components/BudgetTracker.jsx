@@ -12,7 +12,7 @@ const getMonthYear = (date) =>
 
 const BudgetTracker = () => {
   const { expenses, updateBudget, isUpdatingBudget } = useExpenseStore();
-  const { authUser, getBudget, budget } = useAuthStore();
+  const {  getBudget, budget } = useAuthStore();
 
   const [givenBudget, setGivenBudget] = useState("");
 

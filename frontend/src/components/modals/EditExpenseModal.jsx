@@ -107,10 +107,15 @@ const EditExpenseModal = ({ expenseId, editingId, setEditingId }) => {
           />
 
           <div className="modal-action">
-            <button className="btn btn-primary " disabled={isEditingExpense}>
+            <button
+              type="submit"
+              className="btn btn-primary "
+              disabled={isEditingExpense}
+            >
               {isEditingExpense ? <Loader2 className="animate-spin" /> : "Save"}
             </button>
             <button
+              type="button"
               className="btn btn-ghost"
               onClick={() => setEditingId(null)}
             >
