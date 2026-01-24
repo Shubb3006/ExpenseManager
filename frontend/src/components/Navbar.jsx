@@ -7,24 +7,24 @@ import LogoutModal from "./modals/LogoutModal";
 import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
-  const { authUser, checkAuth } = useAuthStore();
+  const { authUser } = useAuthStore();
   const [isLogout, setIsLogout] = useState(false);
   const [showNav, setShowNav] = useState(false);
 
-  // useEffect(() => {
-  //   checkAuth();
-  // }, []);
 
   function handleLogout() {
     setIsLogout(true);
   }
+
+   
+
 
   return (
     <div className="bg-base-100 py-2 shadow-md px-6 sticky top-0 z-1 flex flex-col">
       {/* Left */}
       <div className="flex">
         <button
-        aria-label="show Navbar"
+          aria-label="show Navbar"
           className="block sm:hidden flex-1"
           onClick={() => setShowNav(!showNav)}
         >
