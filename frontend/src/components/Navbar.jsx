@@ -33,7 +33,6 @@ const Navbar = () => {
           className="block sm:hidden flex-1"
           onClick={() => setShowNav(!showNav)}
         >
-          {" "}
           {showNav ? <X /> : <Menu />}
         </button>
 
