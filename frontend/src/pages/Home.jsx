@@ -11,11 +11,8 @@ import TodayExpense from "../components/TodayExpense";
 
 const Home = () => {
   const { getExpenses, expenses, gettingExpenses } = useExpenseStore();
-  const { authUser} = useAuthStore();
+  const { authUser } = useAuthStore();
 
-  // useEffect(() => {
-  //   checkAuth();
-  // }, []);
   useEffect(() => {
     if (!authUser) return;
     getExpenses();
@@ -45,7 +42,7 @@ const Home = () => {
           <span className="text-primary">{authUser?.name?.toUpperCase()}</span>
         </h1>
         <p className="text-sm text-gray-500">
-          Here’s a quick overview of your spending
+          Here's a quick overview of your spending
         </p>
       </div>
 
