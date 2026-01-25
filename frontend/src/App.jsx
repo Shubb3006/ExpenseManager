@@ -11,6 +11,7 @@ import { Toaster } from "react-hot-toast";
 import AddExpense from "./pages/AddExpense";
 import { useAuthStore } from "./store/useAuthStore";
 import AuthSkeleton from "./components/skeletons/AuthSkeletons";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const { checkAuth, authUser, isCheckingAuth } = useAuthStore();
@@ -44,6 +45,7 @@ function App() {
           path="/addexpense"
           element={authUser ? <AddExpense /> : <Navigate to="/login " />}
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
