@@ -28,7 +28,7 @@ const NavLinks = ({ onClick }) => {
       <Link
         onClick={onClick}
         to="/addexpense"
-        className={`btn btn-ghost w-32 text-md p-0 ${
+        className={`btn btn-ghost w-32 text-md ${
           location.pathname.startsWith("/addexpense")
             ? "text-primary"
             : "text-base-content"
