@@ -77,6 +77,55 @@ const Signup = () => {
     setFormData({ email: "", password: "", name: "" });
   }
   return (
+ <>
+  <Helmet>
+    <title>Sign Up | Expense Manager</title>
+    <meta
+      name="description"
+      content="Create an account on Expense Manager to track, manage, and analyze your personal expenses securely."
+    />
+    <meta
+      name="keywords"
+      content="signup, create account, expense manager signup, personal finance app, expense tracker"
+    />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Sign Up | Expense Manager" />
+    <meta
+      property="og:description"
+      content="Create an account on Expense Manager to track, manage, and analyze your personal expenses securely."
+    />
+    <meta property="og:image" content="https://yourwebsite.com/Logo_expense_manager.png" />
+    <meta property="og:url" content="https://yourwebsite.com/signup" />
+    <meta property="og:type" content="website" />
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sign Up | Expense Manager" />
+    <meta
+      name="twitter:description"
+      content="Create an account on Expense Manager to track, manage, and analyze your personal expenses securely."
+    />
+    <meta name="twitter:image" content="https://yourwebsite.com/Logo_expense_manager.png" />
+
+    {/* JSON-LD Structured Data */}
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Expense Manager",
+        operatingSystem: "Web",
+        applicationCategory: "FinanceApplication",
+        url: "https://yourwebsite.com/signup",
+        description:
+          "Create an account on Expense Manager to track, manage, and analyze your personal expenses securely.",
+        image: "https://yourwebsite.com/Logo_expense_manager.png",
+      })}
+    </script>
+  </Helmet>
+
+  {/* Your existing Signup form JSX goes here */}
+
     <div className="min-h-[calc(100vh-60px)] flex items-center justify-center bg-base-200">
       <div className="card w-full max-w-md bg-base-100 shadow-2xl">
         <form onSubmit={handleSubmit} className="card-body gap-4">
@@ -180,6 +229,7 @@ const Signup = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

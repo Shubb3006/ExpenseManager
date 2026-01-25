@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useExpenseStore } from "../store/useExpenseStore";
 import { Check, Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet"; // ✅ Import at the top
 
 const AddExpense = () => {
   const { addExpense, addingExpense, deleteExpense } = useExpenseStore();
@@ -114,6 +115,58 @@ const AddExpense = () => {
   }, []);
 
   return (
+    
+
+// Inside your return(), just before the main div
+<>
+  <Helmet>
+    <title>Add New Expense | Expense Manager</title>
+    <meta
+      name="description"
+      content="Add a new personal expense in Expense Manager. Track your spending by entering details such as title, amount, category, note, and date."
+    />
+    <meta
+      name="keywords"
+      content="add expense, expense tracker, personal finance, expense manager, budget tracker, money management"
+    />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Add New Expense | Expense Manager" />
+    <meta
+      property="og:description"
+      content="Add a new personal expense in Expense Manager. Track your spending by entering details such as title, amount, category, note, and date."
+    />
+    <meta property="og:image" content="https://yourwebsite.com/Logo_expense_manager.png" />
+    <meta property="og:url" content="https://yourwebsite.com/addexpense" />
+    <meta property="og:type" content="website" />
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Add New Expense | Expense Manager" />
+    <meta
+      name="twitter:description"
+      content="Add a new personal expense in Expense Manager. Track your spending by entering details such as title, amount, category, note, and date."
+    />
+    <meta name="twitter:image" content="https://yourwebsite.com/Logo_expense_manager.png" />
+
+    {/* JSON-LD Structured Data */}
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "Expense Manager",
+        operatingSystem: "Web",
+        applicationCategory: "FinanceApplication",
+        url: "https://yourwebsite.com/addexpense",
+        description:
+          "Add a new personal expense in Expense Manager. Track your spending by entering details such as title, amount, category, note, and date.",
+        image: "https://yourwebsite.com/Logo_expense_manager.png",
+      })}
+    </script>
+  </Helmet>
+
+  {/* Your existing AddExpense form UI goes here */}
+
     <div className="min-h-[calc(100vh-60px)] flex items-center justify-center bg-linear-to-br from-base-100 to-base-200 px-4">
       <div className="card w-full max-w-md bg-base-100 shadow-xl border border-base-300">
         <form onSubmit={handleSubmit} className="card-body gap-4">
@@ -199,6 +252,7 @@ const AddExpense = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

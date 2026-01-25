@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -59,88 +60,145 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-[calc(100vh-60px)] flex justify-center items-center bg-base-200">
-      <div className="card w-full max-w-md bg-base-100 sbhadow-2xl">
-        <form onSubmit={handleSubmit} className="card-body gap-4">
-          <h2 className="text-2xl font-bold text-center">Login</h2>
-          <div className="form-control">
-            <label
-              htmlFor=""
-              className="input input-bordered flex w-full items-center"
-            >
-              <Mail />
-              <input
-                type="text"
-                value={formData.email}
-            aria-label="Email"
-                onBlur={handleEmailError}
-                onChange={(e) => {
-                  setFormData({ ...formData, email: e.target.value });
-                  setEmailErr("");
-                }}
-                placeholder="Email"
-              />
-            </label>
+    <>
+      <Helmet>
+        <title>Login | Expense Manager</title>
+        <meta
+          name="description"
+          content="Login to your Expense Manager account to track, manage, and analyze your personal expenses securely."
+        />
+        <meta
+          name="keywords"
+          content="login, expense manager login, personal finance app, expense tracker login, budget manager"
+        />
 
-            {emailErr && <p className="text-error text-sm mt-1">{emailErr}</p>}
-          </div>
-          <div className="form-control">
-            <label
-              htmlFor=""
-              className="input input-bordered flex w-full items-center"
-            >
-              <Lock />
-              <input
-                type={showPassword ? "text" : "password"}
-            aria-label="Password"
-                onBlur={handlePasswordError}
-                value={formData.password}
-                onChange={(e) => {
-                  setFormData({ ...formData, password: e.target.value });
-                  setPasswordErr("");
-                }}
-                placeholder="Password"
-              />
-              <button
-                type="button"
-                aria-label="Toggle Password Visibility"
-                onClick={(e) => setShowPassword(!showPassword)}
+        {/* Open Graph */}
+        <meta property="og:title" content="Login | Expense Manager" />
+        <meta
+          property="og:description"
+          content="Login to your Expense Manager account to track, manage, and analyze your personal expenses securely."
+        />
+        <meta
+          property="og:image"
+          content="https://yourwebsite.com/Logo_expense_manager.png"
+        />
+        <meta property="og:url" content="https://yourwebsite.com/login" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Login | Expense Manager" />
+        <meta
+          name="twitter:description"
+          content="Login to your Expense Manager account to track, manage, and analyze your personal expenses securely."
+        />
+        <meta
+          name="twitter:image"
+          content="https://yourwebsite.com/Logo_expense_manager.png"
+        />
+
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "Expense Manager",
+            operatingSystem: "Web",
+            applicationCategory: "FinanceApplication",
+            url: "https://yourwebsite.com/login",
+            description:
+              "Login to your Expense Manager account to track, manage, and analyze your personal expenses securely.",
+            image: "https://yourwebsite.com/Logo_expense_manager.png",
+          })}
+        </script>
+      </Helmet>
+
+      {/* Your existing login form JSX goes here */}
+      <div className="min-h-[calc(100vh-60px)] flex justify-center items-center bg-base-200">
+        <div className="card w-full max-w-md bg-base-100 sbhadow-2xl">
+          <form onSubmit={handleSubmit} className="card-body gap-4">
+            <h2 className="text-2xl font-bold text-center">Login</h2>
+            <div className="form-control">
+              <label
+                htmlFor=""
+                className="input input-bordered flex w-full items-center"
               >
-                {showPassword ? (
-                  <EyeClosed className="w-5 h-5 opacity-70 cursor-pointer" />
-                ) : (
-                  <Eye className="w-5 h-5 opacity-70 cursor-pointer" />
-                )}
-              </button>
-            </label>
-            {passwordErr && (
-              <p className="text-error text-sm mt-1">{passwordErr}</p>
-            )}
-          </div>
+                <Mail />
+                <input
+                  type="text"
+                  value={formData.email}
+                  aria-label="Email"
+                  onBlur={handleEmailError}
+                  onChange={(e) => {
+                    setFormData({ ...formData, email: e.target.value });
+                    setEmailErr("");
+                  }}
+                  placeholder="Email"
+                />
+              </label>
 
-          <button
-          aria-label="Login"
-            className="btn btn-primary w-full mt-4"
-            disabled={
-              isLoggingIn ||
-              !formData.email.trim() ||
-              !formData.password.trim() ||
-              passwordErr ||
-              emailErr
-            }
-          >
-            {isLoggingIn ? <Loader2 className="animate-spin" /> : "Log In"}
-          </button>
+              {emailErr && (
+                <p className="text-error text-sm mt-1">{emailErr}</p>
+              )}
+            </div>
+            <div className="form-control">
+              <label
+                htmlFor=""
+                className="input input-bordered flex w-full items-center"
+              >
+                <Lock />
+                <input
+                  type={showPassword ? "text" : "password"}
+                  aria-label="Password"
+                  onBlur={handlePasswordError}
+                  value={formData.password}
+                  onChange={(e) => {
+                    setFormData({ ...formData, password: e.target.value });
+                    setPasswordErr("");
+                  }}
+                  placeholder="Password"
+                />
+                <button
+                  type="button"
+                  aria-label="Toggle Password Visibility"
+                  onClick={(e) => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? (
+                    <EyeClosed className="w-5 h-5 opacity-70 cursor-pointer" />
+                  ) : (
+                    <Eye className="w-5 h-5 opacity-70 cursor-pointer" />
+                  )}
+                </button>
+              </label>
+              {passwordErr && (
+                <p className="text-error text-sm mt-1">{passwordErr}</p>
+              )}
+            </div>
 
-          <p className="text-center text-sm">
-            New User?
-            <Link to="/signup" className="link link-primary ml-1">
-              Sign Up
-            </Link>
-          </p>
-        </form>
+            <button
+              aria-label="Login"
+              className="btn btn-primary w-full mt-4"
+              disabled={
+                isLoggingIn ||
+                !formData.email.trim() ||
+                !formData.password.trim() ||
+                passwordErr ||
+                emailErr
+              }
+            >
+              {isLoggingIn ? <Loader2 className="animate-spin" /> : "Log In"}
+            </button>
+
+            <p className="text-center text-sm">
+              New User?
+              <Link to="/signup" className="link link-primary ml-1">
+                Sign Up
+              </Link>
+            </p>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -6,6 +6,7 @@ import ExpenseList from "../components/ExpenseList";
 import { exportToCSV } from "../lib/exportToCSV";
 import { useAuthStore } from "../store/useAuthStore";
 import { Download } from "lucide-react";
+import { Helmet } from "react-helmet";
 
 const Expenses = () => {
   const [deletingId, setDeletingId] = useState(null);
@@ -136,6 +137,49 @@ const Expenses = () => {
   if (gettingExpenses) return <ExpensesSkeleton />;
 
   return (
+    <>
+     <Helmet>
+        <title>View & Analyze Expenses | Expense Manager</title>
+        <meta
+          name="description"
+          content="View, filter, and analyze all your personal expenses in Expense Manager. Track spending trends, export data as CSV, and manage your budget efficiently."
+        />
+        <meta
+          name="keywords"
+          content="view expenses, expense tracker, expense manager, personal finance, spending tracker, budget tracker, financial analysis, CSV export"
+        />
+        {/* Open Graph */}
+        <meta property="og:title" content="View & Analyze Expenses | Expense Manager" />
+        <meta
+          property="og:description"
+          content="View, filter, and analyze all your personal expenses in Expense Manager. Track spending trends, export data as CSV, and manage your budget efficiently."
+        />
+        <meta property="og:image" content="https://yourwebsite.com/Logo_expense_manager.png" />
+        <meta property="og:url" content="https://yourwebsite.com/expenses" />
+        <meta property="og:type" content="website" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="View & Analyze Expenses | Expense Manager" />
+        <meta
+          name="twitter:description"
+          content="View, filter, and analyze all your personal expenses in Expense Manager. Track spending trends, export data as CSV, and manage your budget efficiently."
+        />
+        <meta name="twitter:image" content="https://yourwebsite.com/Logo_expense_manager.png" />
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Expense Manager",
+            "operatingSystem": "Web",
+            "applicationCategory": "FinanceApplication",
+            "url": "https://yourwebsite.com/expenses",
+            "description": "View, filter, and analyze all your personal expenses in Expense Manager. Track spending trends, export data as CSV, and manage your budget efficiently.",
+            "image": "https://yourwebsite.com/Logo_expense_manager.png"
+          })}
+        </script>
+      </Helmet>
+
     <div className="max-w-2xl mx-auto space-y-3">
       {/* OVERALL TOTAL */}
       <div>
@@ -253,6 +297,7 @@ const Expenses = () => {
         />
       )}
     </div>
+    </>
   );
 };
 
