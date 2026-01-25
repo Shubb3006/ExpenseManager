@@ -154,8 +154,8 @@ const Expenses = () => {
           property="og:description"
           content="View, filter, and analyze all your personal expenses in Expense Manager. Track spending trends, export data as CSV, and manage your budget efficiently."
         />
-        <meta property="og:image" content="https://yourwebsite.com/Logo_expense_manager.png" />
-        <meta property="og:url" content="https://yourwebsite.com/expenses" />
+        <meta property="og:image" content="https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png" />
+        <meta property="og:url" content="https://expensemanager-f4ck.onrender.com/expenses" />
         <meta property="og:type" content="website" />
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -164,7 +164,7 @@ const Expenses = () => {
           name="twitter:description"
           content="View, filter, and analyze all your personal expenses in Expense Manager. Track spending trends, export data as CSV, and manage your budget efficiently."
         />
-        <meta name="twitter:image" content="https://yourwebsite.com/Logo_expense_manager.png" />
+        <meta name="twitter:image" content="https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png" />
         {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -175,7 +175,7 @@ const Expenses = () => {
             "applicationCategory": "FinanceApplication",
             "url": "https://yourwebsite.com/expenses",
             "description": "View, filter, and analyze all your personal expenses in Expense Manager. Track spending trends, export data as CSV, and manage your budget efficiently.",
-            "image": "https://yourwebsite.com/Logo_expense_manager.png"
+            "image": "https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png"
           })}
         </script>
       </Helmet>

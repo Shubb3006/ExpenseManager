@@ -80,9 +80,9 @@ const Login = () => {
         />
         <meta
           property="og:image"
-          content="https://yourwebsite.com/Logo_expense_manager.png"
+          content="https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png"
         />
-        <meta property="og:url" content="https://yourwebsite.com/login" />
+        <meta property="og:url" content="https://expensemanager-f4ck.onrender.com/login" />
         <meta property="og:type" content="website" />
 
         {/* Twitter Card */}
@@ -94,7 +94,7 @@ const Login = () => {
         />
         <meta
           name="twitter:image"
-          content="https://yourwebsite.com/Logo_expense_manager.png"
+          content="https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png"
         />
 
         {/* JSON-LD Structured Data */}
@@ -105,10 +105,10 @@ const Login = () => {
             name: "Expense Manager",
             operatingSystem: "Web",
             applicationCategory: "FinanceApplication",
-            url: "https://yourwebsite.com/login",
+            url: "https://expensemanager-f4ck.onrender.com/login",
             description:
               "Login to your Expense Manager account to track, manage, and analyze your personal expenses securely.",
-            image: "https://yourwebsite.com/Logo_expense_manager.png",
+            image: "https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png",
           })}
         </script>
       </Helmet>

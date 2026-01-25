@@ -57,7 +57,7 @@ const Home = () => {
         />
         <meta
           property="og:image"
-          content="https://yourwebsite.com/Logo_expense_manager.png"
+          content="https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png"
         />
         <meta property="og:url" content="https://yourwebsite.com" />
         <meta property="og:type" content="website" />
@@ -73,7 +73,7 @@ const Home = () => {
         />
         <meta
           name="twitter:image"
-          content="https://yourwebsite.com/Logo_expense_manager.png"
+          content="https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png"
         />
         {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
@@ -83,10 +83,10 @@ const Home = () => {
             name: "Expense Manager",
             operatingSystem: "Web",
             applicationCategory: "FinanceApplication",
-            url: "https://yourwebsite.com",
+            url: "https://expensemanager-f4ck.onrender.com/",
             description:
               "Track and analyze your personal expenses with a simple online expense manager. Export data as CSV for deeper analysis.",
-            image: "https://yourwebsite.com/Logo_expense_manager.png",
+            image: "https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png",
           })}
         </script>
       </Helmet>

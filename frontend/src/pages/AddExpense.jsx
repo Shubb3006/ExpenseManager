@@ -136,8 +136,8 @@ const AddExpense = () => {
       property="og:description"
       content="Add a new personal expense in Expense Manager. Track your spending by entering details such as title, amount, category, note, and date."
     />
-    <meta property="og:image" content="https://yourwebsite.com/Logo_expense_manager.png" />
-    <meta property="og:url" content="https://yourwebsite.com/addexpense" />
+    <meta property="og:image" content="https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png" />
+    <meta property="og:url" content="https://expensemanager-f4ck.onrender.com/addexpense" />
     <meta property="og:type" content="website" />
 
     {/* Twitter Card */}
@@ -147,7 +147,7 @@ const AddExpense = () => {
       name="twitter:description"
       content="Add a new personal expense in Expense Manager. Track your spending by entering details such as title, amount, category, note, and date."
     />
-    <meta name="twitter:image" content="https://yourwebsite.com/Logo_expense_manager.png" />
+    <meta name="twitter:image" content="https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png" />
 
     {/* JSON-LD Structured Data */}
     <script type="application/ld+json">
@@ -157,10 +157,10 @@ const AddExpense = () => {
         name: "Expense Manager",
         operatingSystem: "Web",
         applicationCategory: "FinanceApplication",
-        url: "https://yourwebsite.com/addexpense",
+        url: "https://expensemanager-f4ck.onrender.com/addexpense",
         description:
           "Add a new personal expense in Expense Manager. Track your spending by entering details such as title, amount, category, note, and date.",
-        image: "https://yourwebsite.com/Logo_expense_manager.png",
+        image: "https://expensemanager-f4ck.onrender.com//Logo_expense_manager.png",
       })}
     </script>
   </Helmet>

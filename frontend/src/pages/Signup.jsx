@@ -95,8 +95,8 @@ const Signup = () => {
       property="og:description"
       content="Create an account on Expense Manager to track, manage, and analyze your personal expenses securely."
     />
-    <meta property="og:image" content="https://yourwebsite.com/Logo_expense_manager.png" />
-    <meta property="og:url" content="https://yourwebsite.com/signup" />
+    <meta property="og:image" content="https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png" />
+    <meta property="og:url" content="https://expensemanager-f4ck.onrender.com/signup" />
     <meta property="og:type" content="website" />
 
     {/* Twitter Card */}
@@ -106,7 +106,7 @@ const Signup = () => {
       name="twitter:description"
       content="Create an account on Expense Manager to track, manage, and analyze your personal expenses securely."
     />
-    <meta name="twitter:image" content="https://yourwebsite.com/Logo_expense_manager.png" />
+    <meta name="twitter:image" content="https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png" />
 
     {/* JSON-LD Structured Data */}
     <script type="application/ld+json">
@@ -116,10 +116,10 @@ const Signup = () => {
         name: "Expense Manager",
         operatingSystem: "Web",
         applicationCategory: "FinanceApplication",
-        url: "https://yourwebsite.com/signup",
+        url: "https://expensemanager-f4ck.onrender.com/signup",
         description:
           "Create an account on Expense Manager to track, manage, and analyze your personal expenses securely.",
-        image: "https://yourwebsite.com/Logo_expense_manager.png",
+        image: "https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png",
       })}
     </script>
   </Helmet>
