@@ -12,6 +12,7 @@ import AddExpense from "./pages/AddExpense";
 import { useAuthStore } from "./store/useAuthStore";
 import AuthSkeleton from "./components/skeletons/AuthSkeletons";
 import NotFound from "./pages/NotFound";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   const { checkAuth, authUser, isCheckingAuth } = useAuthStore();
@@ -25,10 +26,7 @@ function App() {
       <Toaster />
       <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={authUser ? <Home /> : <Navigate to="/login" />}
-        />
+        <Route path="/" element={authUser ? <Home /> : <LandingPage />} />
         <Route
           path="/expenses"
           element={authUser ? <Expenses /> : <Navigate to="/login" />}

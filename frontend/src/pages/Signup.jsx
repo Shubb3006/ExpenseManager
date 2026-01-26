@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -77,158 +78,170 @@ const Signup = () => {
     setFormData({ email: "", password: "", name: "" });
   }
   return (
- <>
-  <Helmet>
-    <title>Sign Up | Expense Manager</title>
-    <meta
-      name="description"
-      content="Create an account on Expense Manager to track, manage, and analyze your personal expenses securely."
-    />
-    <meta
-      name="keywords"
-      content="signup, create account, expense manager signup, personal finance app, expense tracker"
-    />
+    <>
+      <Helmet>
+        <title>Sign Up | Expense Manager</title>
+        <meta
+          name="description"
+          content="Create an account on Expense Manager to track, manage, and analyze your personal expenses securely."
+        />
+        <meta
+          name="keywords"
+          content="signup, create account, expense manager signup, personal finance app, expense tracker"
+        />
 
-    {/* Open Graph */}
-    <meta property="og:title" content="Sign Up | Expense Manager" />
-    <meta
-      property="og:description"
-      content="Create an account on Expense Manager to track, manage, and analyze your personal expenses securely."
-    />
-    <meta property="og:image" content="https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png" />
-    <meta property="og:url" content="https://expensemanager-f4ck.onrender.com/signup" />
-    <meta property="og:type" content="website" />
+        {/* Open Graph */}
+        <meta property="og:title" content="Sign Up | Expense Manager" />
+        <meta
+          property="og:description"
+          content="Create an account on Expense Manager to track, manage, and analyze your personal expenses securely."
+        />
+        <meta
+          property="og:image"
+          content="https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png"
+        />
+        <meta
+          property="og:url"
+          content="https://expensemanager-f4ck.onrender.com/signup"
+        />
+        <meta property="og:type" content="website" />
 
-    {/* Twitter Card */}
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sign Up | Expense Manager" />
-    <meta
-      name="twitter:description"
-      content="Create an account on Expense Manager to track, manage, and analyze your personal expenses securely."
-    />
-    <meta name="twitter:image" content="https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sign Up | Expense Manager" />
+        <meta
+          name="twitter:description"
+          content="Create an account on Expense Manager to track, manage, and analyze your personal expenses securely."
+        />
+        <meta
+          name="twitter:image"
+          content="https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png"
+        />
 
-    {/* JSON-LD Structured Data */}
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        name: "Expense Manager",
-        operatingSystem: "Web",
-        applicationCategory: "FinanceApplication",
-        url: "https://expensemanager-f4ck.onrender.com/signup",
-        description:
-          "Create an account on Expense Manager to track, manage, and analyze your personal expenses securely.",
-        image: "https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png",
-      })}
-    </script>
-  </Helmet>
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "Expense Manager",
+            operatingSystem: "Web",
+            applicationCategory: "FinanceApplication",
+            url: "https://expensemanager-f4ck.onrender.com/signup",
+            description:
+              "Create an account on Expense Manager to track, manage, and analyze your personal expenses securely.",
+            image:
+              "https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png",
+          })}
+        </script>
+      </Helmet>
 
-  {/* Your existing Signup form JSX goes here */}
+      {/* Your existing Signup form JSX goes here */}
 
-    <div className="min-h-[calc(100vh-60px)] flex items-center justify-center bg-base-200">
-      <div className="card w-full max-w-md bg-base-100 shadow-2xl">
-        <form onSubmit={handleSubmit} className="card-body gap-4">
-          <h2 className="text-2xl font-bold text-center">Create Account</h2>
+      <div className="min-h-[calc(100vh-60px)] flex items-center justify-center bg-base-200">
+        <div className="card w-full max-w-md bg-base-100 shadow-2xl">
+          <form onSubmit={handleSubmit} className="card-body gap-4">
+            <h2 className="text-2xl font-bold text-center">Create Account</h2>
 
-          {/* Email */}
-          <div className="form-control">
-            <label className="input input-bordered flex items-center gap-2 w-full ">
-              <Mail className="w-5 h-5 opacity-70" />
-              <input
-                type="text"
-                aria-label="Email"
-                onBlur={handleEmailError}
-                value={formData.email}
-                onChange={(e) => {
-                  setFormData({ ...formData, email: e.target.value });
-                  setEmailErr("");
-                }}
-                placeholder="Email"
-                className="grow"
-              />
-            </label>
-            {emailErr && <p className="text-error text-sm mt-1">{emailErr}</p>}
-          </div>
+            {/* Email */}
+            <div className="form-control">
+              <label className="input input-bordered flex items-center gap-2 w-full ">
+                <Mail className="w-5 h-5 opacity-70" />
+                <input
+                  type="text"
+                  aria-label="Email"
+                  onBlur={handleEmailError}
+                  value={formData.email}
+                  onChange={(e) => {
+                    setFormData({ ...formData, email: e.target.value });
+                    setEmailErr("");
+                  }}
+                  placeholder="Email"
+                  className="grow"
+                />
+              </label>
+              {emailErr && (
+                <p className="text-error text-sm mt-1">{emailErr}</p>
+              )}
+            </div>
 
-          {/* Name */}
-          <div className="form-control">
-            <label className="input input-bordered flex items-center gap-2 w-full">
-              <User className="w-5 h-5 opacity-70" />
-              <input
-                type="text"
-                aria-label="Name"
-                value={formData.name}
-                onBlur={handleNameErr}
-                onChange={(e) => {
-                  setFormData({ ...formData, name: e.target.value });
-                  setNameErr("");
-                }}
-                placeholder="Name"
-                className="grow"
-              />
-            </label>
-            {nameErr && <p className="text-error text-sm mt-1">{nameErr}</p>}
-          </div>
+            {/* Name */}
+            <div className="form-control">
+              <label className="input input-bordered flex items-center gap-2 w-full">
+                <User className="w-5 h-5 opacity-70" />
+                <input
+                  type="text"
+                  aria-label="Name"
+                  value={formData.name}
+                  onBlur={handleNameErr}
+                  onChange={(e) => {
+                    setFormData({ ...formData, name: e.target.value });
+                    setNameErr("");
+                  }}
+                  placeholder="Name"
+                  className="grow"
+                />
+              </label>
+              {nameErr && <p className="text-error text-sm mt-1">{nameErr}</p>}
+            </div>
 
-          {/* Password */}
-          <div className="form-control">
-            <label className="input input-bordered flex items-center gap-2 w-full">
-              <Lock className="w-5 h-5 opacity-70" />
-              <input
-                type={showPassword ? "text" : "password"}
-                value={formData.password}
-                aria-label="Password"
-                onBlur={handlePasswordError}
-                onChange={(e) => {
-                  setFormData({ ...formData, password: e.target.value });
-                  setPasswordErr("");
-                }}
-                placeholder="Password"
-                className="grow"
-              />
-              <button
-              aria-label="Toggle Password Visibility"
-                type="button"
-                onClick={(e) => setShowPassword(!showPassword)}
-              >
-                {showPassword ? (
-                  <EyeClosed className="w-5 h-5 opacity-70 cursor-pointer" />
-                ) : (
-                  <Eye className="w-5 h-5 opacity-70 cursor-pointer" />
-                )}
-              </button>
-            </label>
-            {passwordErr && (
-              <p className="text-error text-sm mt-1">{passwordErr}</p>
-            )}
-          </div>
+            {/* Password */}
+            <div className="form-control">
+              <label className="input input-bordered flex items-center gap-2 w-full">
+                <Lock className="w-5 h-5 opacity-70" />
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={formData.password}
+                  aria-label="Password"
+                  onBlur={handlePasswordError}
+                  onChange={(e) => {
+                    setFormData({ ...formData, password: e.target.value });
+                    setPasswordErr("");
+                  }}
+                  placeholder="Password"
+                  className="grow"
+                />
+                <button
+                  aria-label="Toggle Password Visibility"
+                  type="button"
+                  onClick={(e) => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? (
+                    <EyeClosed className="w-5 h-5 opacity-70 cursor-pointer" />
+                  ) : (
+                    <Eye className="w-5 h-5 opacity-70 cursor-pointer" />
+                  )}
+                </button>
+              </label>
+              {passwordErr && (
+                <p className="text-error text-sm mt-1">{passwordErr}</p>
+              )}
+            </div>
 
-          <button
-          aria-label="Signup"
-            className="btn btn-primary w-full mt-4"
-            disabled={
-              isSigningUp ||
-              !formData.email.trim() ||
-              !formData.password.trim() ||
-              !formData.name.trim() ||
-              emailErr ||
-              passwordErr ||
-              nameErr
-            }
-          >
-            {isSigningUp ? <Loader2 className="animate-spin" /> : "Sign Up"}
-          </button>
+            <button
+              aria-label="Signup"
+              className="btn btn-primary w-full mt-4"
+              disabled={
+                isSigningUp ||
+                !formData.email.trim() ||
+                !formData.password.trim() ||
+                !formData.name.trim() ||
+                emailErr ||
+                passwordErr ||
+                nameErr
+              }
+            >
+              {isSigningUp ? <Loader2 className="animate-spin" /> : "Sign Up"}
+            </button>
 
-          <p className="text-center text-sm">
-            Already have an account?
-            <Link to="/login" className="link link-primary ml-1">
-              Login
-            </Link>
-          </p>
-        </form>
+            <p className="text-center text-sm">
+              Already have an account?
+              <Link to="/login" className="link link-primary ml-1">
+                Login
+              </Link>
+            </p>
+          </form>
+        </div>
       </div>
-    </div>
     </>
   );
 };
