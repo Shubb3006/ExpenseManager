@@ -86,7 +86,8 @@ const Home = () => {
             url: "https://expensemanager-f4ck.onrender.com/",
             description:
               "Track and analyze your personal expenses with a simple online expense manager. Export data as CSV for deeper analysis.",
-            image: "https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png",
+            image:
+              "https://expensemanager-f4ck.onrender.com/Logo_expense_manager.png",
           })}
         </script>
       </Helmet>
