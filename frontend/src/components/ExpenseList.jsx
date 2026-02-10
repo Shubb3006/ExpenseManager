@@ -63,7 +63,6 @@ const ExpenseList = ({
               <p className="text-sm text-gray-500 italic">{expense.note}</p>
             )}
             <p className="text-sm text-gray-400">
-              {expense.date}
               {new Date(expense.date).toLocaleDateString()}
             </p>
           </div>
