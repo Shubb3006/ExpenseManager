@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { useExpenseStore } from "../../store/useExpenseStore";
 
-const EditExpenseModal = ({ expenseId, editingId, setEditingId }) => {
+const EditExpenseModal = ({ expenseId, setEditingId }) => {
   const { expenses, editExpense, isEditingExpense } = useExpenseStore();
   const expense = expenses.find((expense) => expense._id === expenseId);
   const [formData, setFormData] = useState({

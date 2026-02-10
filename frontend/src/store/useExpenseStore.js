@@ -58,6 +58,7 @@ export const useExpenseStore = create((set) => ({
   editExpense: async (expenseId, data) => {
     set({ isEditingExpense: true });
     try {
+      console.log("clicked")
       const res = await axiosInstance.patch(
         `/expense/updateExpense/${expenseId}`,
         {
@@ -76,6 +77,7 @@ export const useExpenseStore = create((set) => ({
       toast.success("Updated");
     } catch (error) {
       toast.error(error.response?.data?.message);
+      
     } finally {
       set({ isEditingExpense: false });
     }
